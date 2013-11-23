@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
         padlist.add("foobar");
         padlist.add("loremipsum");
         
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2, padlist);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, padlist);
         lv.setAdapter(arrayAdapter);
 		
 	}
