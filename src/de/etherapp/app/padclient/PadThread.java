@@ -36,17 +36,12 @@ public class PadThread extends Thread{
 				System.out.println((String)padid);
 				long revCount = (Long) client.getRevisionsCount((String)padid).get("revisions");
 				
-				
 				//get lastedited
 				long lastEdited = (Long) client.getLastEdited((String)padid).get("lastEdited");	
 				
 				pad.put((String)padid, new Pad((String)padid,usersCount,revCount,lastEdited));
 			}
-			
 			pa.setPadList(pad);
 		}
-		
 	}
-	
-	
 }

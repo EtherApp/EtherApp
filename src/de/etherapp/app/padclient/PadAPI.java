@@ -24,7 +24,7 @@ public class PadAPI {
 	}
 	
 	public void updatePads(){
-		new PadThread(this,"pads");
+		new PadThread(this,"init");
 	}
 	
 	public void setPadList(HashMap<String,Pad> pad) {
