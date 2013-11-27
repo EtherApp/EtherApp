@@ -6,7 +6,6 @@ import java.util.List;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.adapters.CustomBaseAdapter;
@@ -68,7 +67,6 @@ public class MainActivity extends Activity {
         CustomBaseAdapter adapter = new CustomBaseAdapter(this, padlistItems);
         lv.setAdapter(adapter);
         
-		
 	}
 
 	@Override
