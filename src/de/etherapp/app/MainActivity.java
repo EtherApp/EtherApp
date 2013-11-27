@@ -1,6 +1,9 @@
 package de.etherapp.app;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import de.etherapp.app.padclient.PadAPI;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,19 +25,18 @@ public class MainActivity extends Activity {
         
         //create array list
         ArrayList<String> padlist = new ArrayList<String>();
-        padlist.add("netze1");
-        padlist.add("protolol");
-        padlist.add("netze2");
-        padlist.add("uet");
-        padlist.add("komplexlabor");
-        padlist.add("netzak");
-        padlist.add("netzak2");
-        padlist.add("swe");
-        padlist.add("NZ1-Switching");
-        padlist.add("blabla");
-        padlist.add("foobar");
-        padlist.add("loremipsum");
+              
+        PadAPI pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
+        pa.updatePads();
         
+        List l = null;
+        while(l == null){
+        	l = pa.getPadlist();  	
+        }
+        
+        for (Object name : l) {
+            padlist.add((String)name);
+		}
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, padlist);
         lv.setAdapter(arrayAdapter);
 		
@@ -46,5 +48,5 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
 }
