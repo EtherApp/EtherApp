@@ -1,27 +1,27 @@
 package de.etherapp.beans;
 
 public class PadlistItem {
-    private String title;
-    private Integer usersCount;
-    private Integer revCount;
-    private Integer lastEdited;
+    private String padId;
+    private Long usersCount;
+    private Long revCount;
+    private Long lastEdited;
  
-    public PadlistItem(String title, int usersCount, int revCount, int lastEdited) {
-        this.title = title;
+    public PadlistItem(String padId, long usersCount, long revCount, long lastEdited) {
+        this.padId = padId;
         this.usersCount = usersCount;
         this.revCount = revCount;
         this.lastEdited = lastEdited;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPadId() {
+        return padId;
     }
     
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPadId(String padId) {
+        this.padId = padId;
     }
      
-    public int getUsersCount() {
+    public long getUsersCount() {
 		return usersCount;
 	}
     
@@ -29,11 +29,11 @@ public class PadlistItem {
 		return usersCount.toString();
 	}
 
-	public void setUsersCount(int usersCount) {
+	public void setUsersCount(long usersCount) {
 		this.usersCount = usersCount;
 	}
 
-	public int getRevCount() {
+	public long getRevCount() {
 		return revCount;
 	}
 	
@@ -41,11 +41,11 @@ public class PadlistItem {
 		return revCount.toString();
 	}
 
-	public void setRevCount(int revCount) {
+	public void setRevCount(long revCount) {
 		this.revCount = revCount;
 	}
 	
-	public int getLastEdited() {
+	public long getLastEdited() {
 		return lastEdited;
 	}
 	
@@ -53,7 +53,7 @@ public class PadlistItem {
 		return lastEdited.toString();
 	}
 
-	public void setLastEdited(int lastEdited) {
+	public void setLastEdited(long lastEdited) {
 		this.lastEdited = lastEdited;
 	}
 }

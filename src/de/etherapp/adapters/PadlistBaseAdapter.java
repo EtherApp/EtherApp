@@ -22,10 +22,10 @@ public class PadlistBaseAdapter extends BaseAdapter {
  
     /*private view holder class*/
     private class ViewHolder {
-        TextView txtTitle;
-        TextView txtUsersCount;
-        TextView txtRevCount;
-        TextView txtLastEdited;
+        TextView txtPadId      = null;
+        TextView txtUsersCount = null;
+        TextView txtRevCount   = null;
+        TextView txtLastEdited = null;
     }
  
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -37,7 +37,7 @@ public class PadlistBaseAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.padlist_item, null);
             holder = new ViewHolder();
             
-            holder.txtTitle      = (TextView) convertView.findViewById(R.id.txtTitle);
+            holder.txtPadId      = (TextView) convertView.findViewById(R.id.txtPadId);
             holder.txtUsersCount = (TextView) convertView.findViewById(R.id.txtUsersCount);
             holder.txtRevCount	 = (TextView) convertView.findViewById(R.id.txtRevCount);
             holder.txtLastEdited = (TextView) convertView.findViewById(R.id.txtLastEdited);
@@ -50,7 +50,7 @@ public class PadlistBaseAdapter extends BaseAdapter {
  
         PadlistItem padlistItem = (PadlistItem) getItem(position);
  
-        holder.txtTitle.setText(padlistItem.getTitle());
+        holder.txtPadId.setText(padlistItem.getPadId());
         holder.txtUsersCount.setText(padlistItem.getUsersCountString());
         holder.txtRevCount.setText(padlistItem.getRevCountString());
         holder.txtLastEdited.setText(padlistItem.getLastEditedString());

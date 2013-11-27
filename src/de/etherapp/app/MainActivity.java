@@ -31,13 +31,13 @@ public class MainActivity extends Activity {
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
         pa.updatePads();
         
-        List l = null;
-        while(l == null){
-        	l = pa.getPadlist();  	
+        HashMap<String, pad> padlist = null;
+        while(padlist == null){
+        	padlist = pa.getPadList();  	
         }
         
-        for (Object name : l) {
-            PadlistItem item = new PadlistItem((String)name, 3, 10, 181718);
+        for (Object thispad : padlist.values()) {
+            PadlistItem item = new PadlistItem(pad);
         	padlistItems.add(item);
 		}
          

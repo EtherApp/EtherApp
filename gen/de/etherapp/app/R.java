@@ -37,8 +37,8 @@ public final class R {
         public static final int imgUsersCount=0x7f080002;
         public static final int padlist=0x7f080000;
         public static final int txtLastEdited=0x7f080007;
+        public static final int txtPadId=0x7f080001;
         public static final int txtRevCount=0x7f080005;
-        public static final int txtTitle=0x7f080001;
         public static final int txtUsersCount=0x7f080003;
     }
     public static final class layout {
