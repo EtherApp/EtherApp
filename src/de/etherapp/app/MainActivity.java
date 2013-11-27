@@ -1,8 +1,11 @@
 package de.etherapp.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import de.etherapp.app.padclient.PadAPI;
+import de.etherapp.app.padclient.Pad;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -29,15 +32,14 @@ public class MainActivity extends Activity {
         padlistItems = new ArrayList<PadlistItem>();
               
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
-        pa.updatePads();
         
-        HashMap<String, pad> padlist = null;
+        HashMap<String, Pad> padlist = null;
         while(padlist == null){
-        	padlist = pa.getPadList();  	
+        	padlist = pa.getPadList();	
         }
         
-        for (Object thispad : padlist.values()) {
-            PadlistItem item = new PadlistItem(pad);
+        for (Pad thispad : padlist.values()) {
+        	PadlistItem item = new PadlistItem(thispad);
         	padlistItems.add(item);
 		}
          

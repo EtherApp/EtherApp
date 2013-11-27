@@ -1,16 +1,18 @@
 package de.etherapp.beans;
 
+import de.etherapp.app.padclient.Pad;
+
 public class PadlistItem {
     private String padId;
     private Long usersCount;
     private Long revCount;
     private Long lastEdited;
  
-    public PadlistItem(String padId, long usersCount, long revCount, long lastEdited) {
-        this.padId = padId;
-        this.usersCount = usersCount;
-        this.revCount = revCount;
-        this.lastEdited = lastEdited;
+    public PadlistItem(Pad pad) {
+        this.padId = pad.getPadId();
+        this.usersCount = pad.getUsersCount();
+        this.revCount = pad.getRevCount();
+        this.lastEdited = pad.getLastEdited();
     }
 
     public String getPadId() {
