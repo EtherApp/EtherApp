@@ -21,14 +21,14 @@
             android:layout_height="fill_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="Foo" />
+            android:text="@string/foo" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="Bar" />
+            android:text="@string/bar" />
     </LinearLayout>
 
 </LinearLayout>
