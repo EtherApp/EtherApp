@@ -22,13 +22,24 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int iconmonstr_lock_11_icon_32=0x7f020001;
+        public static final int iconmonstr_lock_3_icon_32=0x7f020002;
+        public static final int iconmonstr_multi_files4_icon_32=0x7f020003;
+        public static final int iconmonstr_time_3_icon_32=0x7f020004;
+        public static final int iconmonstr_user_14_icon_32=0x7f020005;
+        public static final int iconmonstr_x_mark_icon_32=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f080004;
-        public static final int desc=0x7f080003;
-        public static final int icon=0x7f080001;
+        public static final int action_settings=0x7f080009;
+        public static final int btnDeletePad=0x7f080008;
+        public static final int imgLastEdited=0x7f080006;
+        public static final int imgRevCount=0x7f080004;
+        public static final int imgUsersCount=0x7f080002;
         public static final int padlist=0x7f080000;
-        public static final int title=0x7f080002;
+        public static final int txtLastEdited=0x7f080007;
+        public static final int txtRevCount=0x7f080005;
+        public static final int txtTitle=0x7f080001;
+        public static final int txtUsersCount=0x7f080003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

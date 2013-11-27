@@ -1,33 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
- 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:contentDescription="@string/image"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
- 
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/icon"
-        android:paddingBottom="10dp"
-        android:textColor="#CC0033"
-        android:textSize="16dp" />
- 
-    <TextView
-        android:id="@+id/desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/icon"
-        android:paddingLeft="10dp"
-        android:textColor="#3399FF"
-        android:textSize="14dp" />
- 
-</RelativeLayout>
+        android:paddingBottom="5dp"
+        android:text="@string/foo"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/imgUsersCount"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/iconmonstr_user_14_icon_32" />
+        
+        <TextView
+            android:id="@+id/txtUsersCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bar"
+            android:layout_toRightOf="@+id/imgUsersCount" />
+
+        <ImageView
+            android:id="@+id/imgRevCount"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/iconmonstr_multi_files4_icon_32"
+            android:layout_toRightOf="@+id/txtUsersCount"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/txtRevCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bar"
+            android:layout_toRightOf="@+id/imgRevCount" />
+
+        <ImageView
+            android:id="@+id/imgLastEdited"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/iconmonstr_time_3_icon_32"
+            android:layout_toRightOf="@+id/txtRevCount"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/txtLastEdited"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bar"
+            android:layout_toRightOf="@+id/imgLastEdited" />
+        
+        
+        <ImageButton
+            android:id="@+id/btnDeletePad"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/iconmonstr_x_mark_icon_32"
+            android:layout_alignParentRight="true" />
+
+        
+        
+    </RelativeLayout>
+
+</LinearLayout>

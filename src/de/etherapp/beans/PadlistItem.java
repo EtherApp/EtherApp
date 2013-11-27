@@ -1,35 +1,58 @@
 package de.etherapp.beans;
 
 public class PadlistItem {
-	private int imageId;
     private String title;
-    private String desc;
+    private Integer usersCount;
+    private Integer revCount;
+    private Integer lastEdited;
  
-    public PadlistItem(int imageId, String title, String desc) {
-        this.imageId = imageId;
+    public PadlistItem(String title, int usersCount, int revCount, int lastEdited) {
         this.title = title;
-        this.desc = desc;
+        this.usersCount = usersCount;
+        this.revCount = revCount;
     }
-    public int getImageId() {
-        return imageId;
-    }
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
-    }
-    public String getDesc() {
-        return desc;
-    }
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
+
     public String getTitle() {
         return title;
     }
+    
     public void setTitle(String title) {
         this.title = title;
     }
-    @Override
-    public String toString() {
-        return title + "\n" + desc;
-    }
+     
+    public int getUsersCount() {
+		return usersCount;
+	}
+    
+    public String getUsersCountString() {
+		return usersCount.toString();
+	}
+
+	public void setUsersCount(int usersCount) {
+		this.usersCount = usersCount;
+	}
+
+	public int getRevCount() {
+		return revCount;
+	}
+	
+	public String getRevCountString() {
+		return revCount.toString();
+	}
+
+	public void setRevCount(int revCount) {
+		this.revCount = revCount;
+	}
+	
+	public int getLastEdited() {
+		return lastEdited;
+	}
+	
+	public String getLastEditedString() {
+		return lastEdited.toString();
+	}
+
+	public void setLastEdited(int lastEdited) {
+		this.lastEdited = lastEdited;
+	}
 }

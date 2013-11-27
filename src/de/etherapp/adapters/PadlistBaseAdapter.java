@@ -7,25 +7,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import de.etherapp.app.R;
 import de.etherapp.beans.PadlistItem;
  
-public class CustomBaseAdapter extends BaseAdapter {
+public class PadlistBaseAdapter extends BaseAdapter {
     Context context;
     List<PadlistItem> padlistItems;
  
-    public CustomBaseAdapter(Context context, List<PadlistItem> items) {
+    public PadlistBaseAdapter(Context context, List<PadlistItem> items) {
         this.context = context;
         this.padlistItems = items;
     }
  
     /*private view holder class*/
     private class ViewHolder {
-        ImageView imageView;
         TextView txtTitle;
-        TextView txtDesc;
+        TextView txtUsersCount;
+        TextView txtRevCount;
+        TextView txtLastEdited;
     }
  
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -36,9 +36,12 @@ public class CustomBaseAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.padlist_item, null);
             holder = new ViewHolder();
-            holder.txtDesc = (TextView) convertView.findViewById(R.id.desc);
-            holder.txtTitle = (TextView) convertView.findViewById(R.id.title);
-            holder.imageView = (ImageView) convertView.findViewById(R.id.icon);
+            
+            holder.txtTitle      = (TextView) convertView.findViewById(R.id.txtTitle);
+            holder.txtUsersCount = (TextView) convertView.findViewById(R.id.txtUsersCount);
+            holder.txtRevCount	 = (TextView) convertView.findViewById(R.id.txtRevCount);
+            holder.txtLastEdited = (TextView) convertView.findViewById(R.id.txtLastEdited);
+           
             convertView.setTag(holder);
         }
         else {
@@ -47,9 +50,10 @@ public class CustomBaseAdapter extends BaseAdapter {
  
         PadlistItem padlistItem = (PadlistItem) getItem(position);
  
-        holder.txtDesc.setText(padlistItem.getDesc());
         holder.txtTitle.setText(padlistItem.getTitle());
-        holder.imageView.setImageResource(padlistItem.getImageId());
+        holder.txtUsersCount.setText(padlistItem.getUsersCountString());
+        holder.txtRevCount.setText(padlistItem.getRevCountString());
+        holder.txtLastEdited.setText(padlistItem.getLastEditedString());
  
         return convertView;
     }
