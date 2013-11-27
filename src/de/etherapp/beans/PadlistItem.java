@@ -10,6 +10,7 @@ public class PadlistItem {
         this.title = title;
         this.usersCount = usersCount;
         this.revCount = revCount;
+        this.lastEdited = lastEdited;
     }
 
     public String getTitle() {

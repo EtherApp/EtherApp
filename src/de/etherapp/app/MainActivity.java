@@ -2,6 +2,7 @@ package de.etherapp.app;
 
 import java.util.ArrayList;
 import java.util.List;
+import de.etherapp.app.padclient.PadAPI;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -13,10 +14,8 @@ import de.etherapp.adapters.PadlistBaseAdapter;
 public class MainActivity extends Activity {
 
 	ListView lv;
-    List<PadlistItem> padlistItems;
-	
-	public static final String[] titles = new String[] { "netzak", "protokolle", "netze2", "netze", "uet", "flegl", "netzman" };
-	 
+    List<PadlistItem> padlistItems; 
+	PadAPI pa = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +25,22 @@ public class MainActivity extends Activity {
 		//get Listview we want to fill
         lv = (ListView) findViewById(R.id.padlist);
         
-        
+        //create array list
         padlistItems = new ArrayList<PadlistItem>();
-        for (int i = 0; i < titles.length; i++) {
-        	PadlistItem item = new PadlistItem(titles[i], 3, 10, 111781718);
-        	padlistItems.add(item);
+              
+        pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
+        pa.updatePads();
+        
+        List l = null;
+        while(l == null){
+        	l = pa.getPadlist();  	
         }
- 
+        
+        for (Object name : l) {
+            PadlistItem item = new PadlistItem((String)name, 3, 10, 181718);
+        	padlistItems.add(item);
+		}
+         
         PadlistBaseAdapter adapter = new PadlistBaseAdapter(this, padlistItems);
         lv.setAdapter(adapter);
         
@@ -44,5 +52,5 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
 }
