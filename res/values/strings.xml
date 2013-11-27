@@ -4,5 +4,8 @@
     <string name="app_name">EtherApp</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-
+	
+    <string name="foo">Foo</string>
+    <string name="bar">Bar</string>
+    <string name="image">BILD</string>
 </resources>
