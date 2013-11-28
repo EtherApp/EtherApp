@@ -10,17 +10,20 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import de.etherapp.app.R;
 import de.etherapp.beans.PadlistItem;
- 
+
+/*
+ * Base adapter for showing padlist
+ * instance is being created in activity
+ */
 public class PadlistBaseAdapter extends BaseAdapter {
     Context context;
-    List<PadlistItem> padlistItems;
+    List<PadlistItem> padlistItems; //list with all padlist items (PadlistItem) in it
  
     public PadlistBaseAdapter(Context context, List<PadlistItem> items) {
         this.context = context;
         this.padlistItems = items;
     }
  
-    /*private view holder class*/
     private class ViewHolder {
         TextView txtPadId      = null;
         TextView txtUsersCount = null;
@@ -48,8 +51,10 @@ public class PadlistBaseAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
  
+        //item to fill with values
         PadlistItem padlistItem = (PadlistItem) getItem(position);
- 
+        
+        //set values to list item
         holder.txtPadId.setText(padlistItem.getPadId());
         holder.txtUsersCount.setText(padlistItem.getUsersCountString());
         holder.txtRevCount.setText(padlistItem.getRevCountString());

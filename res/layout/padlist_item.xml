@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="@string/foo"
         android:textSize="22sp"
         android:textStyle="bold" />
     
@@ -22,13 +21,13 @@
             android:id="@+id/imgUsersCount"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/iconmonstr_user_14_icon_32" />
+            android:src="@drawable/iconmonstr_user_14_icon_32"
+            android:contentDescription="@string/imgUsersCount" />
         
         <TextView
             android:id="@+id/txtUsersCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bar"
             android:layout_toRightOf="@+id/imgUsersCount" />
 
         <ImageView
@@ -37,13 +36,13 @@
             android:layout_height="16dp"
             android:src="@drawable/iconmonstr_multi_files4_icon_32"
             android:layout_toRightOf="@+id/txtUsersCount"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:contentDescription="@string/imgRevCount" />
 
         <TextView
             android:id="@+id/txtRevCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bar"
             android:layout_toRightOf="@+id/imgRevCount" />
 
         <ImageView
@@ -52,13 +51,13 @@
             android:layout_height="16dp"
             android:src="@drawable/iconmonstr_time_3_icon_32"
             android:layout_toRightOf="@+id/txtRevCount"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:contentDescription="@string/imgLastEdited" />
 
         <TextView
             android:id="@+id/txtLastEdited"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bar"
             android:layout_toRightOf="@+id/imgLastEdited" />
         
         
@@ -67,7 +66,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/iconmonstr_x_mark_icon_32"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/btnDeletePad" />
 
         
         

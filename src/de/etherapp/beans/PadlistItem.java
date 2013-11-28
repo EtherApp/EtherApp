@@ -3,32 +3,33 @@ package de.etherapp.beans;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import de.etherapp.app.padclient.Pad;
 
 public class PadlistItem {
-    private String padId;
-    private Long usersCount;
-    private Long revCount;
-    private Long lastEdited;
+	private String padId;
+	private Long usersCount;
+	private Long revCount;
+	private Long lastEdited;
  
-    public PadlistItem(Pad pad) {
-        this.padId = pad.getPadId();
-        this.usersCount = pad.getUsersCount();
-        this.revCount = pad.getRevCount();
-        this.lastEdited = pad.getLastEdited();
+	public PadlistItem(Pad pad) {
+		this.padId = pad.getPadId();
+		this.usersCount = pad.getUsersCount();
+		this.revCount = pad.getRevCount();
+		this.lastEdited = pad.getLastEdited();
     }
 
-    public String getPadId() {
-        return padId;
-    }
+	public String getPadId() {
+		return padId;
+	}
     
-    public void setPadId(String padId) {
-        this.padId = padId;
-    }
+	public void setPadId(String padId) {
+		this.padId = padId;
+	}
      
-    public long getUsersCount() {
+	public long getUsersCount() {
 		return usersCount;
 	}
     
@@ -57,12 +58,14 @@ public class PadlistItem {
 	}
 	
 	public String getLastEditedString() {
+		//converts timestamp to datetime format
+		//NOTE: should be outsourced to helper class
 		Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(lastEdited);         
-        Date d = (Date) c.getTime();        
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy, HH:mm"); 
-        format.setTimeZone(TimeZone.getTimeZone("GMT+1"));
-        return format.format(d);
+		c.setTimeInMillis(lastEdited);         
+		Date d = (Date) c.getTime();        
+		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.GERMANY); 
+		format.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		return format.format(d);
 	}
 
 	public void setLastEdited(long lastEdited) {

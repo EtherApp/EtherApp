@@ -2,7 +2,6 @@ package de.etherapp.app;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import de.etherapp.app.padclient.PadAPI;
 import de.etherapp.app.padclient.Pad;
@@ -28,29 +27,34 @@ public class MainActivity extends Activity {
 		//get Listview we want to fill
         lv = (ListView) findViewById(R.id.padlist);
         
-        //create array list
+        //array list with all padlist items in it
         padlistItems = new ArrayList<PadlistItem>();
               
+        //pad connection, should be outsourced (!)
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
         
+        //waiting stuff, should be replaced by Loader (!)
         HashMap<String, Pad> padlist = null;
         while(padlist == null){
-        	padlist = pa.getPadList();	
+        	padlist = pa.getPadList();
         }
         
+        //iterate through pads and add them to the list
         for (Pad thispad : padlist.values()) {
         	PadlistItem item = new PadlistItem(thispad);
         	padlistItems.add(item);
-		}
-         
+        }
+
+        //set values to the adapter
         PadlistBaseAdapter adapter = new PadlistBaseAdapter(this, padlistItems);
+        
+        //apply adapter to the ListView
         lv.setAdapter(adapter);
         
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
