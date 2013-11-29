@@ -60,17 +60,9 @@ public class PadlistBaseAdapter extends BaseAdapter {
         
 
         //start loaders for asynchronous loading of metadata
-        if (holder.txtUsersCount != null) {
-        	new PadDataTask(holder.txtUsersCount, padlistItem).execute("usersCount");
-        }
-        
-        if (holder.txtRevCount != null) {
-        	new PadDataTask(holder.txtRevCount, padlistItem).execute("revCount");
-        }
-        
-        if (holder.txtLastEdited != null) {
-        	new PadDataTask(holder.txtLastEdited, padlistItem).execute("lastEdited");
-        }
+       	new PadDataTask(holder.txtUsersCount, padlistItem).execute("usersCount");
+       	new PadDataTask(holder.txtRevCount, padlistItem).execute("revCount");
+       	new PadDataTask(holder.txtLastEdited, padlistItem).execute("lastEdited");
         
         return convertView;
     }

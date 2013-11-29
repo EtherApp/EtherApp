@@ -13,6 +13,7 @@ import de.etherapp.epclient.Pad;
 import de.etherapp.epclient.PadAPI;
 import de.etherapp.adapters.PadlistBaseAdapter;
 
+
 public class MainActivity extends Activity {
 
 	ListView lv;
@@ -30,13 +31,18 @@ public class MainActivity extends Activity {
         //array list with all padlist items in it
         padlistItems = new ArrayList<PadlistItem>();
         
+        HashMap<String, Pad> padlist = null;
+        
         //INIT API - 
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
         
-        HashMap<String, Pad> padlist = null;
+        int pos = GlobalConfig.putNewApi(pa);
+        GlobalConfig.selectApi(pos);
+        
+        GlobalConfig.currentApi.init();
         
         while(padlist == null){
-    		padlist = pa.getPadList();
+    		padlist = GlobalConfig.currentApi.getPadList();
         }
         
         //iterate through pads and add them to the list

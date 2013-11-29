@@ -28,36 +28,41 @@
             android:id="@+id/txtUsersCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
             android:layout_toRightOf="@+id/imgUsersCount" />
 
         <ImageView
             android:id="@+id/imgRevCount"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:src="@drawable/iconmonstr_multi_files4_icon_32"
             android:layout_toRightOf="@+id/txtUsersCount"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
             android:contentDescription="@string/imgRevCount" />
 
         <TextView
             android:id="@+id/txtRevCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
             android:layout_toRightOf="@+id/imgRevCount" />
 
         <ImageView
             android:id="@+id/imgLastEdited"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
             android:src="@drawable/iconmonstr_time_3_icon_32"
             android:layout_toRightOf="@+id/txtRevCount"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="4dp"
             android:contentDescription="@string/imgLastEdited" />
 
         <TextView
             android:id="@+id/txtLastEdited"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:layout_toRightOf="@+id/imgLastEdited" />
         
         

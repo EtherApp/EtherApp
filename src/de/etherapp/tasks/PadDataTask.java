@@ -1,12 +1,18 @@
 package de.etherapp.tasks;
 
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.List;
+
+import org.etherpad_lite_client.EPLiteClient;
+
 import de.etherapp.app.R;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
-
+import de.etherapp.app.GlobalConfig;
 import android.os.AsyncTask;
 import android.widget.TextView;
+
 
 public class PadDataTask  extends AsyncTask<String, Void, String> {
 	private final WeakReference<TextView> tvRef;
@@ -20,10 +26,28 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 	@Override
 	// Actual download method, run in the task thread
 	protected String doInBackground(String... method) {
-		//download data here
-		System.out.println(method[0]);
-		this.pli.setUsersCount(25);
-		return "25";
+		EPLiteClient client = GlobalConfig.currentApi.getClient();
+		
+		if(method[0].equals("usersCount")){
+			long usersCount = client.padUsersCount(pli.getPadId());
+			pli.setUsersCount(usersCount);
+			return pli.getUsersCountString();
+		}
+		else if(method[0].equals("revCount")){
+			HashMap result = client.getRevisionsCount(pli.getPadId());
+			long revCount = (Long) result.get("revisions");
+			pli.setRevCount(revCount);
+			return pli.getRevCountString();
+		}
+		else if(method[0].equals("lastEdited")){
+			HashMap result = client.getLastEdited(pli.getPadId());
+			long lastEdited = (Long) result.get("lastEdited");
+			pli.setLastEdited(lastEdited);
+			return pli.getLastEditedString();
+		}
+		else{
+			return null;
+		}
 	}
 
 	@Override
@@ -38,7 +62,7 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 			if (tv != null) {
 
 				if (result != null) {
-					tv.setText((CharSequence)result);
+					tv.setText(result);
 				} else {
 					//set placeholder
 				}
@@ -46,44 +70,4 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 
 		}
 	}
-
-	/*static Bitmap downloadBitmap(String url) {
-		final AndroidHttpClient client = AndroidHttpClient.newInstance("Android");
-		final HttpGet getRequest = new HttpGet(url);
-		try {
-			HttpResponse response = client.execute(getRequest);
-			final int statusCode = response.getStatusLine().getStatusCode();
-			if (statusCode != HttpStatus.SC_OK) {
-				Log.w("ImageDownloader", "Error " + statusCode
-						+ " while retrieving bitmap from " + url);
-				return null;
-			}
-
-			final HttpEntity entity = response.getEntity();
-			if (entity != null) {
-				InputStream inputStream = null;
-				try {
-					inputStream = entity.getContent();
-					final Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-					return bitmap;
-				} finally {
-					if (inputStream != null) {
-						inputStream.close();
-					}
-					entity.consumeContent();
-				}
-			}
-		} catch (Exception e) {
-			// Could provide a more explicit error message for IOException or
-			// IllegalStateException
-			getRequest.abort();
-			Log.w("ImageDownloader", "Error while retrieving bitmap from " + url);
-		} finally {
-			if (client != null) {
-				client.close();
-			}
-		}
-		return null;
-	}*/
-
 }

@@ -15,11 +15,9 @@ public class PadAPI {
 		APIKEY = apikey;
 		PADURL = padurl;
 		client = new EPLiteClient(PADURL, APIKEY);
-		init();
 	}
 
-	
-	private void init(){
+	public void init(){
 		new PadThread(this);
 	}
 	
