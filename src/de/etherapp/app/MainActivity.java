@@ -30,29 +30,9 @@ public class MainActivity extends Activity {
         //array list with all padlist items in it
         padlistItems = new ArrayList<PadlistItem>();
         
-
-        //pad connection, should be outsourced (!)
+        //INIT API - 
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
-        
-        
-        /*
-         * Pads holen, nur Strings, und Padobjekt Pad(String) davon erstellen
-         *         
-         *         
-         *         
-         *         
-         *         
-         */
-             
-        
-        //waiting stuff, should be replaced by Loader (!)
-        HashMap<String, Pad> padlist = null;
-        while(padlist == null){
-        	//zeige noch ne Lademeldung an
-        	
-        	//while padlist is being retrieved
-        	padlist = pa.getPadList();
-        }
+        HashMap<String, Pad> padlist = pa.getPadList();
         
         //iterate through pads and add them to the list
         for (Pad thispad : padlist.values()) {

@@ -1,6 +1,7 @@
 package de.etherapp.epclient;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.etherpad_lite_client.EPLiteClient;
 
@@ -20,11 +21,14 @@ public class PadAPI {
 
 	
 	public void init(){
-		new PadThread(this,"init");
-	}
-	
-	public void updatePads(){
-		new PadThread(this,"init");
+		HashMap result = client.listAllPads();
+		List padIds = (List) result.get("padIDs");
+
+		Pad pad = null;
+		for (Object padid : padIds) {
+			pad = new Pad((String)padid);
+			padhash.put((String)padid, pad);
+		}
 	}
 	
 	public void setPadList(HashMap<String,Pad> pad) {
