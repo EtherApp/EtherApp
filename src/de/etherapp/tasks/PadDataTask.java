@@ -1,49 +1,46 @@
 package de.etherapp.tasks;
 
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.HttpGet;
 import de.etherapp.app.R;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.http.AndroidHttpClient;
+import de.etherapp.beans.PadlistItem;
+import de.etherapp.epclient.Pad;
+
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-public class PadDataTask  extends AsyncTask<String, Void, Bitmap> {
-	private final WeakReference<ImageView> imageViewReference;
-
-	public PadDataTask(ImageView imageView) {
-		imageViewReference = new WeakReference<ImageView>(imageView);
+public class PadDataTask  extends AsyncTask<String, Void, String> {
+	private final WeakReference<TextView> tvRef;
+	private PadlistItem pli = null;
+	
+	public PadDataTask(TextView tv, PadlistItem pli) {
+		this.tvRef = new WeakReference<TextView>(tv);
+		this.pli = pli;
 	}
 
 	@Override
 	// Actual download method, run in the task thread
-	protected Bitmap doInBackground(String... params) {
-		// params comes from the execute() call: params[0] is the url.
-		return downloadBitmap(params[0]);
+	protected String doInBackground(String... method) {
+		//download data here
+		System.out.println(method[0]);
+		this.pli.setUsersCount(25);
+		return "25";
 	}
 
 	@Override
 	// Once the image is downloaded, associates it to the imageView
-	protected void onPostExecute(Bitmap bitmap) {
+	protected void onPostExecute(String result) {
 		if (isCancelled()) {
-			bitmap = null;
+			result = null;
 		}
 
-		if (imageViewReference != null) {
-			ImageView imageView = imageViewReference.get();
-			if (imageView != null) {
+		if (tvRef != null) {
+			TextView tv= tvRef.get();
+			if (tv != null) {
 
-				if (bitmap != null) {
-					imageView.setImageBitmap(bitmap);
+				if (result != null) {
+					tv.setText((CharSequence)result);
 				} else {
-					imageView.setImageDrawable(imageView.getContext().getResources()
-							.getDrawable(R.drawable.list_placeholder));
+					//set placeholder
 				}
 			}
 

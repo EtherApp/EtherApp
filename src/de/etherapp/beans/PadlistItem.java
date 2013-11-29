@@ -9,7 +9,7 @@ import java.util.TimeZone;
 import de.etherapp.epclient.Pad;
 
 public class PadlistItem {
-	private Pad pad;
+	public Pad pad;
  
 	public PadlistItem(Pad pad) {
 		this.pad = pad;
