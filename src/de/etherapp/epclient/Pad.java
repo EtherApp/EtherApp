@@ -1,17 +1,14 @@
-package de.etherapp.app.padclient;
+package de.etherapp.epclient;
 
 public class Pad {
 
 	private String padId = null;
 	private long usersCount = 0;
-	private long revCount = 0;
+	private long revCount   = 0;
 	private long lastEdited = 0;
 	
-	public Pad(String padId, long usersCount,long revCount,long lastEdited){
+	public Pad(String padId){
 		this.padId = padId;
-		this.usersCount = usersCount;
-		this.revCount = revCount;
-		this.lastEdited = lastEdited;
 	}
 
 	public String getPadId() {
@@ -26,7 +23,7 @@ public class Pad {
 		return usersCount;
 	}
 
-	public void setUsersCount(int usersCount) {
+	public void setUsersCount(long usersCount) {
 		this.usersCount = usersCount;
 	}
 
@@ -34,7 +31,7 @@ public class Pad {
 		return revCount;
 	}
 
-	public void setRevCount(int revCount) {
+	public void setRevCount(long revCount) {
 		this.revCount = revCount;
 	}
 
@@ -42,7 +39,7 @@ public class Pad {
 		return lastEdited;
 	}
 
-	public void setLastEdited(int lastEdited) {
+	public void setLastEdited(long lastEdited) {
 		this.lastEdited = lastEdited;
 	}
 	

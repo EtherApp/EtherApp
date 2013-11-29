@@ -6,60 +6,68 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import de.etherapp.app.padclient.Pad;
+import de.etherapp.epclient.Pad;
 
 public class PadlistItem {
-	private String padId;
-	private Long usersCount;
-	private Long revCount;
-	private Long lastEdited;
+	private Pad pad;
  
 	public PadlistItem(Pad pad) {
-		this.padId = pad.getPadId();
-		this.usersCount = pad.getUsersCount();
-		this.revCount = pad.getRevCount();
-		this.lastEdited = pad.getLastEdited();
+		this.pad = pad;
     }
 
+	public Pad getPad(){
+		return pad;
+	}
+	
 	public String getPadId() {
-		return padId;
+		return pad.getPadId();
 	}
     
 	public void setPadId(String padId) {
-		this.padId = padId;
+		pad.setPadId(padId);
 	}
      
 	public long getUsersCount() {
-		return usersCount;
+		return pad.getUsersCount();
 	}
     
     public String getUsersCountString() {
-		return usersCount.toString();
+		return Long.toString(pad.getUsersCount());
 	}
 
 	public void setUsersCount(long usersCount) {
-		this.usersCount = usersCount;
+		pad.setUsersCount(usersCount);
 	}
 
 	public long getRevCount() {
-		return revCount;
+		return pad.getRevCount();
 	}
 	
 	public String getRevCountString() {
-		return revCount.toString();
+		return Long.toString(pad.getRevCount());
 	}
 
 	public void setRevCount(long revCount) {
-		this.revCount = revCount;
+		pad.setRevCount(revCount);
 	}
 	
 	public long getLastEdited() {
-		return lastEdited;
+		return pad.getLastEdited();
+	}
+	
+	public void setLastEdited(long lastEdited) {
+		pad.setLastEdited(lastEdited);
 	}
 	
 	public String getLastEditedString() {
 		//converts timestamp to datetime format
 		//NOTE: should be outsourced to helper class
+		long lastEdited = pad.getLastEdited();
+		
+		if(lastEdited == 0){
+			return null;
+		}
+		
 		Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(lastEdited);         
 		Date d = (Date) c.getTime();        
@@ -68,7 +76,5 @@ public class PadlistItem {
 		return format.format(d);
 	}
 
-	public void setLastEdited(long lastEdited) {
-		this.lastEdited = lastEdited;
-	}
+	
 }

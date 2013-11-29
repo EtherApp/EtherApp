@@ -3,14 +3,14 @@ package de.etherapp.app;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import de.etherapp.app.padclient.PadAPI;
-import de.etherapp.app.padclient.Pad;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.widget.ListView;
 import de.etherapp.beans.PadlistItem;
+import de.etherapp.epclient.Pad;
+import de.etherapp.epclient.PadAPI;
 import de.etherapp.adapters.PadlistBaseAdapter;
 
 public class MainActivity extends Activity {
@@ -29,13 +29,28 @@ public class MainActivity extends Activity {
         
         //array list with all padlist items in it
         padlistItems = new ArrayList<PadlistItem>();
-              
+        
+
         //pad connection, should be outsourced (!)
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
+        
+        
+        /*
+         * Pads holen, nur Strings, und Padobjekt Pad(String) davon erstellen
+         *         
+         *         
+         *         
+         *         
+         *         
+         */
+             
         
         //waiting stuff, should be replaced by Loader (!)
         HashMap<String, Pad> padlist = null;
         while(padlist == null){
+        	//zeige noch ne Lademeldung an
+        	
+        	//while padlist is being retrieved
         	padlist = pa.getPadList();
         }
         
@@ -50,7 +65,6 @@ public class MainActivity extends Activity {
         
         //apply adapter to the ListView
         lv.setAdapter(adapter);
-        
 	}
 
 	@Override

@@ -56,9 +56,11 @@ public class PadlistBaseAdapter extends BaseAdapter {
         
         //set values to list item
         holder.txtPadId.setText(padlistItem.getPadId());
-        holder.txtUsersCount.setText(padlistItem.getUsersCountString());
+        
+        //these shall be loaded asynchronously by loader threads  
+        /*holder.txtUsersCount.setText(padlistItem.getUsersCountString());
         holder.txtRevCount.setText(padlistItem.getRevCountString());
-        holder.txtLastEdited.setText(padlistItem.getLastEditedString());
+        holder.txtLastEdited.setText(padlistItem.getLastEditedString());*/
  
         return convertView;
     }

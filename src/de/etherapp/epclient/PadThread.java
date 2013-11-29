@@ -1,4 +1,4 @@
-package de.etherapp.app.padclient;
+package de.etherapp.epclient;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,17 +29,7 @@ public class PadThread extends Thread{
 			List padIds = (List) result.get("padIDs");
 			
 			for (Object padid : padIds) {
-				//get userscount
-				long usersCount = client.padUsersCount((String)padid);
-				
-				//get revisioncount
-				System.out.println((String)padid);
-				long revCount = (Long) client.getRevisionsCount((String)padid).get("revisions");
-				
-				//get lastedited
-				long lastEdited = (Long) client.getLastEdited((String)padid).get("lastEdited");	
-				
-				pad.put((String)padid, new Pad((String)padid,usersCount,revCount,lastEdited));
+				pad.put((String)padid, new Pad((String)padid));
 			}
 			pa.setPadList(pad);
 		}

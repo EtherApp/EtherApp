@@ -1,4 +1,4 @@
-package de.etherapp.app.padclient;
+package de.etherapp.epclient;
 
 import java.util.HashMap;
 
