@@ -32,7 +32,12 @@ public class MainActivity extends Activity {
         
         //INIT API - 
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
-        HashMap<String, Pad> padlist = pa.getPadList();
+        
+        HashMap<String, Pad> padlist = null;
+        
+        while(padlist == null){
+    		padlist = pa.getPadList();
+        }
         
         //iterate through pads and add them to the list
         for (Pad thispad : padlist.values()) {
