@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import de.etherapp.app.R;
 import de.etherapp.beans.PadlistItem;
+import de.etherapp.tasks.PadDataTask;
 
 /*
  * Base adapter for showing padlist
@@ -57,11 +58,20 @@ public class PadlistBaseAdapter extends BaseAdapter {
         //set values to list item
         holder.txtPadId.setText(padlistItem.getPadId());
         
-        //these shall be loaded asynchronously by loader threads  
-        /*holder.txtUsersCount.setText(padlistItem.getUsersCountString());
-        holder.txtRevCount.setText(padlistItem.getRevCountString());
-        holder.txtLastEdited.setText(padlistItem.getLastEditedString());*/
- 
+
+        //start loaders for asynchronous loading of metadata
+        if (holder.txtUsersCount != null) {
+        	new PadDataTask(holder.txtUsersCount, padlistItem).execute("usersCount");
+        }
+        
+        if (holder.txtRevCount != null) {
+        	new PadDataTask(holder.txtRevCount, padlistItem).execute("revCount");
+        }
+        
+        if (holder.txtLastEdited != null) {
+        	new PadDataTask(holder.txtLastEdited, padlistItem).execute("lastEdited");
+        }
+        
         return convertView;
     }
  
