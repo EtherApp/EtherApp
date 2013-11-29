@@ -6,4 +6,5 @@ bin/
 *.war
 *.ear
 
+apikey.txt
 .settings/

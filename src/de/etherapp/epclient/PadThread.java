@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.etherpad_lite_client.EPLiteClient;
+import org.etherpad_lite_client.EPLiteException;
 
 public class PadThread extends Thread{
 
@@ -21,12 +22,19 @@ public class PadThread extends Thread{
 		HashMap<String, Pad> pad = new HashMap<String, Pad>();
 			
 		//Get list of all pad ids
-		HashMap result = client.listAllPads();
-		List padIds = (List) result.get("padIDs");
+		try{
+			HashMap result = client.listAllPads();
+			List padIds = (List) result.get("padIDs");
 			
-		for (Object padid : padIds) {
-			pad.put((String)padid, new Pad((String)padid));
+			for (Object padid : padIds) {
+				pad.put((String)padid, new Pad((String)padid));
+			}
+			pa.setPadList(pad);
 		}
-		pa.setPadList(pad);
+		catch(EPLiteException e){
+			System.out.println(e);
+			pa.setPadList(null);
+		}
+
 	}
 }

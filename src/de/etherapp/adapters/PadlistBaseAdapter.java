@@ -1,6 +1,9 @@
 package de.etherapp.adapters;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -56,8 +59,7 @@ public class PadlistBaseAdapter extends BaseAdapter {
         PadlistItem padlistItem = (PadlistItem) getItem(position);
         
         //set values to list item
-        holder.txtPadId.setText(padlistItem.getPadId());
-        
+        holder.txtPadId.setText(padlistItem.getPadName());  
 
         //start loaders for asynchronous loading of metadata
        	new PadDataTask(holder.txtUsersCount, padlistItem).execute("usersCount");

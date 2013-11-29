@@ -26,6 +26,22 @@ public class PadlistItem {
 	public void setPadId(String padId) {
 		pad.setPadId(padId);
 	}
+	
+	public String getPadName() {
+		return pad.getPadName();
+	}
+
+	public void setPadName(String padName) {
+		pad.setPadName(padName);
+	}
+
+	public String getPadGroup() {
+		return pad.getPadGroup();
+	}
+
+	public void setPadGroup(String padGroup) {
+		pad.setPadGroup(padGroup);
+	}
      
 	public long getUsersCount() {
 		return pad.getUsersCount();

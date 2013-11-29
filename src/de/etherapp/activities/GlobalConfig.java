@@ -1,4 +1,4 @@
-package de.etherapp.app;
+package de.etherapp.activities;
 
 import java.util.ArrayList;
 import java.util.List;
