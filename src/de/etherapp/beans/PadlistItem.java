@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+
 import de.etherapp.epclient.Pad;
 
 public class PadlistItem {
@@ -91,6 +94,4 @@ public class PadlistItem {
 		format.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 		return format.format(d);
 	}
-
-	
 }

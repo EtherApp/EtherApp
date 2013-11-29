@@ -8,6 +8,14 @@ import android.os.Bundle;
 import android.accounts.NetworkErrorException;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
@@ -21,7 +29,7 @@ public class MainActivity extends Activity {
 	ListView lv;
     List<PadlistItem> padlistItems; 
 	PadAPI pa = null;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,12 +45,12 @@ public class MainActivity extends Activity {
         
         //INIT API - 
         pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
+
         int pos = GlobalConfig.putNewApi(pa);
         GlobalConfig.selectApi(pos);
         try {
 			GlobalConfig.currentApi.init();
 		} catch (NetworkErrorException e) {
-			System.out.println("skmckmckmdkckm");
 			this.finish();
 		}
         
@@ -67,5 +75,4 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
 }
