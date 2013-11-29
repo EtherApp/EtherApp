@@ -20,7 +20,7 @@ public class PadAPI {
 	}
 
 	
-	public void init(){
+	private void init(){
 		HashMap result = client.listAllPads();
 		List padIds = (List) result.get("padIDs");
 
