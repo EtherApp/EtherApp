@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="de.etherapp.app.MainActivity"
+            android:name="de.etherapp.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.etherapp.app.TabbedActivity"
+            android:name="de.etherapp.activities.TabbedActivity"
             android:label="@string/title_activity_tabbed" >
         </activity>
     </application>

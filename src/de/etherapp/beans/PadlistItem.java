@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+
 import de.etherapp.epclient.Pad;
 
 public class PadlistItem {
@@ -25,6 +28,22 @@ public class PadlistItem {
     
 	public void setPadId(String padId) {
 		pad.setPadId(padId);
+	}
+	
+	public String getPadName() {
+		return pad.getPadName();
+	}
+
+	public void setPadName(String padName) {
+		pad.setPadName(padName);
+	}
+
+	public String getPadGroup() {
+		return pad.getPadGroup();
+	}
+
+	public void setPadGroup(String padGroup) {
+		pad.setPadGroup(padGroup);
 	}
      
 	public long getUsersCount() {
@@ -75,6 +94,4 @@ public class PadlistItem {
 		format.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 		return format.format(d);
 	}
-
-	
 }
