@@ -7,9 +7,8 @@
     <string name="imgRevCount">Revisions</string>
     <string name="imgLastEdited">Last edited</string>
     <string name="btnDeletePad">Delete this pad</string>
-    <string name="foo">Foo</string>
-    <string name="bar">Bar</string>
     <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_padlist">Pad List</string>
+    <string name="title_activity_test_tab">TestTabActivity</string>
 
 </resources>

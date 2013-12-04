@@ -25,12 +25,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.etherapp.activities.TabbedActivity"
-            android:label="@string/title_activity_tabbed" >
+            android:name="de.etherapp.activities.PadlistActivity"
+            android:label="@string/title_activity_padlist" >
         </activity>
         <activity
-            android:name="de.etherapp.activities.TabbedActivity"
-            android:label="@string/title_activity_tabbed" >
+            android:name="de.etherapp.activities.TestTabActivity"
+            android:label="@string/title_activity_test_tab" >
         </activity>
     </application>
 
