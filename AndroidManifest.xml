@@ -28,6 +28,10 @@
             android:name="de.etherapp.activities.TabbedActivity"
             android:label="@string/title_activity_tabbed" >
         </activity>
+        <activity
+            android:name="de.etherapp.activities.TabbedActivity"
+            android:label="@string/title_activity_tabbed" >
+        </activity>
     </application>
 
 </manifest>

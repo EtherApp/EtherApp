@@ -7,6 +7,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.accounts.NetworkErrorException;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +25,7 @@ import de.etherapp.adapters.PadlistBaseAdapter;
 import de.etherapp.app.R;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener{
 
 	ListView lv;
     List<PadlistItem> padlistItems; 
@@ -68,11 +69,28 @@ public class MainActivity extends Activity {
         
         //apply adapter to the ListView
         lv.setAdapter(adapter);
+        
+        
+        //TESTBUTTON GO TO TEST ACTIVITY
+        Button testbuttonmain = (Button)this.findViewById(R.id.testbuttonmain);
+        
+        testbuttonmain.setOnClickListener(this);
+        
+        
+        
+        
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public void onClick(View view) {
+		Intent intent = new Intent(this, TabbedActivity.class);
+        startActivity(intent);
+		
 	}
 }
