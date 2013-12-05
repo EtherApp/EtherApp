@@ -23,12 +23,12 @@ public class MainActivity extends TabActivity {
 
 		//get tab, set tab name and activity to be loaded, add tab to tabhost
 		TabSpec tab1 = tabHost.newTabSpec("padlist");
-		tab1.setIndicator("Pad List");
+		tab1.setIndicator("Pads");
         tab1.setContent(new Intent(this,PadlistActivity.class));
         tabHost.addTab(tab1);
 		
         TabSpec tab2 = tabHost.newTabSpec("testtab");
-        tab2.setIndicator("2nd Tab");
+        tab2.setIndicator("Groups");
         tab2.setContent(new Intent(this,TestTabActivity.class));
         tabHost.addTab(tab2);
         
