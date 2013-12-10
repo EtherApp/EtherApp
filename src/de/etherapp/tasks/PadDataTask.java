@@ -25,9 +25,14 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 	}
 
 	@Override
-	// Actual download method, run in the task thread
+	//background task: retrieve data from API
 	protected String doInBackground(String... method) {
+		//get client from current API
 		EPLiteClient client = GlobalConfig.currentApi.getClient();
+		
+		//depending on the "method" string given, run a method
+		//write return value to Pad object
+		//give return value to onPostExecute unction in order to apply it to the textview
 		
 		if(method[0].equals("usersCount")){
 			long usersCount = 0;
@@ -73,7 +78,7 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 	}
 
 	@Override
-	// Once the image is downloaded, associates it to the imageView
+	//apply String to the TextView when it has been retrieved successfully
 	protected void onPostExecute(String result) {
 		if (isCancelled()) {
 			result = null;
@@ -86,7 +91,7 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 				if (result != null) {
 					tv.setText(result);
 				} else {
-					//set placeholder
+					//TODO: set placeholder
 				}
 			}
 

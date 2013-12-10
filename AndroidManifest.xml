@@ -7,8 +7,9 @@
     <uses-sdk
         android:minSdkVersion="18"
         android:targetSdkVersion="18" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -22,6 +23,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="de.etherapp.activities.PadlistActivity"
+            android:label="@string/title_activity_padlist" >
+        </activity>
+        <activity
+            android:name="de.etherapp.activities.TestTabActivity"
+            android:label="@string/title_activity_test_tab" >
         </activity>
     </application>
 
