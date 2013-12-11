@@ -19,7 +19,9 @@
                     android:id="@android:id/tabcontent"
                     android:layout_height="fill_parent"
                      android:layout_width="fill_parent">
+
                 </FrameLayout>
                 
         </LinearLayout>
+
 </TabHost>

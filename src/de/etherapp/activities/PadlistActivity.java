@@ -29,7 +29,6 @@ public class PadlistActivity extends Activity {
 
 	ListView lv;
     List<PadlistItem> padlistItems; 
-	PadAPI pa = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +42,7 @@ public class PadlistActivity extends Activity {
         padlistItems = new ArrayList<PadlistItem>();
         
         HashMap<String, Pad> padlist = null;
-        
-        //INIT API - 
-        pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
 
-        int pos = GlobalConfig.putNewApi(pa);
-        GlobalConfig.selectApi(pos);
-        try {
-			GlobalConfig.currentApi.init();
-		} catch (NetworkErrorException e) {
-			this.finish();
-		}
-        
-        while(!GlobalConfig.currentApi.isReady()){}
         padlist = GlobalConfig.currentApi.getPadList();
         
         //iterate through pads and add them to the list
