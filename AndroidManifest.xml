@@ -33,11 +33,11 @@
             android:label="@string/title_activity_test_tab" >
         </activity>
         <activity
-            android:name="de.etherapp.activities.SettingsActivity"
+            android:name="de.etherapp.activities.APISettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="de.etherapp.activities.SettingsActivity"
+            android:name="de.etherapp.activities.APISettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
     </application>

@@ -32,8 +32,9 @@ public class GlobalConfig {
 
 		SharedPreferences apipref = ma.getSharedPreferences("etherapp_api" + apiCount , 0);
 		Editor editor = apipref.edit();
-		editor.putString("APIKEY", api.getAPIKEY());
+		editor.putString("APINAME", api.getAPINAME());
 		editor.putString("PADURL", api.getPADURL());
+		editor.putString("APIKEY", api.getAPIKEY());
 		// und alles schreiben
 		editor.commit();
 
@@ -78,11 +79,12 @@ public class GlobalConfig {
 		if(apiCount > -1){
 			for (int i = 0; i <= apiCount; i++) {
 				SharedPreferences apipref = ma.getSharedPreferences("etherapp_api" + i, 0);
-				String apikey = apipref.getString("APIKEY", "");
+				String apiname = apipref.getString("APINAME", "");
 				String padurl = apipref.getString("PADURL", "");
+				String apikey = apipref.getString("APIKEY", "");
 				System.out.println(apikey + " <-> " + padurl);
-				if(!apikey.isEmpty() && !padurl.isEmpty()){
-					PadAPI pa = new PadAPI(padurl, apikey);
+				if(!apikey.isEmpty() && !padurl.isEmpty() && !apiname.isEmpty()){
+					PadAPI pa = new PadAPI(apiname, padurl, apikey);
 					if(currentApiPos == i){
 						currentApi = pa;
 					}

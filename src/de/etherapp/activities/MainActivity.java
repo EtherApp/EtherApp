@@ -12,54 +12,30 @@ import android.widget.TabHost.TabSpec;
 
 public class MainActivity extends TabActivity {
 
-	public static final String preference_name = "etherapp_preferences";
-	public static final String preference_api = "etherapp_api"; //extended by number
-
+	TabHost tabHost = null;
+	TabSpec tab1 = null;
+	TabSpec tab2 = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//try to restore the last preferences 
-		GlobalConfig.loadConfig(this);
-		GlobalConfig.selectApi(GlobalConfig.getApiCount());
+		//TabHost that will contain the Tabs
+		tabHost = (TabHost)findViewById(android.R.id.tabhost);
 		
+		//try to restore the last preferences
+		GlobalConfig.loadConfig(this);
+
 		int apiCount = GlobalConfig.getApiCount();
 		int currentApiPos = GlobalConfig.getCurrentApiPos();
 
-		if(apiCount > -1 & currentApiPos > -1){
-			if(!GlobalConfig.currentApi.isReady()){
-				try {
-					GlobalConfig.currentApi.init();
-				}
-				catch (NetworkErrorException e) {
-					this.finish();
-				}
-				while(!GlobalConfig.currentApi.isReady()){}
-			}
-			//TabHost that will contain the Tabs
-			TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
-
-			//get tab, set tab name and activity to be loaded, add tab to tabhost
-			TabSpec tab1 = tabHost.newTabSpec("padlist");
-			tab1.setIndicator("Pads");
-			tab1.setContent(new Intent(this,PadlistActivity.class));
-			tabHost.addTab(tab1);
-
-			TabSpec tab2 = tabHost.newTabSpec("testtab");
-			tab2.setIndicator("Groups");
-			tab2.setContent(new Intent(this,TestTabActivity.class));
-			tabHost.addTab(tab2);
-
+		if(apiCount > -1 & currentApiPos > -1){ //there is a config we could use
+			startup();
 		}
-		else{
-			Intent intent = new Intent(this,SettingsActivity.class);
+		else{ // no config get settings from user
+			Intent intent = new Intent(this,APISettingsActivity.class);
 			startActivity(intent);
-
-			//INIT API - 
-			/*pa = new PadAPI("http://fastreboot.de:9001","8EkKqoT0CR28PcRDpF311XLtspAchXuM");
-	        int pos = GlobalConfig.putNewApi(pa);
-	        GlobalConfig.selectApi(pos);*/
 		}
 	}
 
@@ -71,9 +47,34 @@ public class MainActivity extends TabActivity {
 	}
 
 	@Override
-	protected void onStart() {
-		super.onStart();
-		System.out.println("ON START");
+	protected void onRestart() {
+		super.onRestart();
+		startup();
 	}
+	
+	private void startup(){
+		if(!GlobalConfig.currentApi.isReady()){
+			try {
+				GlobalConfig.currentApi.init();
+			}
+			catch (NetworkErrorException e) {
+				this.finish();
+			}
+			while(!GlobalConfig.currentApi.isReady()){}
+		}
+		
+		//tabHost.getTabWidget().removeView(tabHost.getTabWidget().getChildAt(0));
+		tabHost.getTabWidget().removeAllViews();
 
+		//get tab, set tab name and activity to be loaded, add tab to tabhost
+		tab1 = tabHost.newTabSpec("padlist");
+		tab1.setIndicator("Pads");
+		tab1.setContent(new Intent(this,PadlistActivity.class));
+		tabHost.addTab(tab1);
+
+		tab2 = tabHost.newTabSpec("testtab");
+		tab2.setIndicator("TESTTAB");
+		tab2.setContent(new Intent(this,TestTabActivity.class));
+		tabHost.addTab(tab2);
+	}
 }

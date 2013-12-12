@@ -9,8 +9,19 @@
     tools:context=".TestTabActivity" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="This is a text activity. It shall contain the group list." />
+
+    <Button
+        android:id="@+id/btnhrhr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="78dp"
+        android:text="! Delete ALL Configs !" />
 
 </RelativeLayout>

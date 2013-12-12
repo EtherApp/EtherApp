@@ -7,6 +7,7 @@ import org.etherpad_lite_client.EPLiteClient;
 import android.accounts.NetworkErrorException;
 
 public class PadAPI {
+	private String APINAME = null;
 	private String APIKEY = null;
 	private String PADURL = null;
 	private EPLiteClient client = null;
@@ -15,7 +16,8 @@ public class PadAPI {
 	
 	private HashMap<String, Pad> padhash = null;
 	
-	public PadAPI(String padurl,String apikey){
+	public PadAPI(String apiname,String padurl,String apikey){
+		this.APINAME = apiname;
 		this.APIKEY = apikey;
 		this.PADURL = padurl;
 		client = new EPLiteClient(PADURL, APIKEY);
@@ -59,5 +61,7 @@ public class PadAPI {
 		return PADURL;
 	}
 
-	
+	public String getAPINAME() {
+		return APINAME;
+	}
 }
