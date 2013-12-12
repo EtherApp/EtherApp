@@ -5,22 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.os.Bundle;
-import android.accounts.NetworkErrorException;
 import android.app.Activity;
-import android.content.Intent;
 import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
-import de.etherapp.epclient.PadAPI;
 import de.etherapp.adapters.PadlistBaseAdapter;
 import de.etherapp.app.R;
 

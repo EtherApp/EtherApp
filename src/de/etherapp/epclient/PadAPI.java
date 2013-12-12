@@ -16,8 +16,8 @@ public class PadAPI {
 	private HashMap<String, Pad> padhash = null;
 	
 	public PadAPI(String padurl,String apikey){
-		APIKEY = apikey;
-		PADURL = padurl;
+		this.APIKEY = apikey;
+		this.PADURL = padurl;
 		client = new EPLiteClient(PADURL, APIKEY);
 	}
 
@@ -50,5 +50,14 @@ public class PadAPI {
 	public boolean isReady(){
 		return ready;
 	}
+
+	public String getAPIKEY() {
+		return APIKEY;
+	}
+
+	public String getPADURL() {
+		return PADURL;
+	}
+
 	
 }
