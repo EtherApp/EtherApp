@@ -1,12 +1,13 @@
 package de.etherapp.activities;
 
-import de.etherapp.app.R;
-import de.etherapp.epclient.PadAPI;
+import de.etherapp.activities.R;
 import android.os.Bundle;
 import android.accounts.NetworkErrorException;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
@@ -28,13 +29,16 @@ public class MainActivity extends TabActivity {
 		GlobalConfig.loadConfig(this);
 
 		int apiCount = GlobalConfig.getApiCount();
+		//GlobalConfig.deleteApi(GlobalConfig.getApiCount());
 		int currentApiPos = GlobalConfig.getCurrentApiPos();
 
-		if(apiCount > -1 & currentApiPos > -1){ //there is a config we could use
+		
+		if(apiCount > -1 && currentApiPos > -1){ //there is a config we could use
 			startup();
 		}
 		else{ // no config get settings from user
 			Intent intent = new Intent(this,APISettingsActivity.class);
+			intent.putExtra("selected", "-1");
 			startActivity(intent);
 		}
 	}
@@ -42,9 +46,27 @@ public class MainActivity extends TabActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.tabbed, menu);
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	            case R.id.action_settings:
+	            Intent i = new Intent(this, SettingsListActivity.class);
+	            startActivity(i);
+	                return true;
+	            case R.id.action_quit:
+	            	this.finish();
+	            	return true;
+	            default:
+	                return super.onOptionsItemSelected(item);
+	    }
+	}
+	
 
 	@Override
 	protected void onRestart() {

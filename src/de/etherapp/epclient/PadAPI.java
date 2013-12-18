@@ -57,7 +57,7 @@ public class PadAPI {
 		return APIKEY;
 	}
 
-	public String getPADURL() {
+	public String getAPIURL() {
 		return PADURL;
 	}
 

@@ -101,9 +101,23 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnsave"
+        android:id="@+id/btnsaveapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save" />
+
+    <Button
+        android:id="@+id/btndeleteapi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Delete" />
+
+    <Button
+        android:id="@+id/btnselectapi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Select" />
 
 </LinearLayout>

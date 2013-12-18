@@ -8,7 +8,7 @@ import org.etherpad_lite_client.EPLiteClient;
 import org.etherpad_lite_client.EPLiteException;
 
 import de.etherapp.activities.GlobalConfig;
-import de.etherapp.app.R;
+import de.etherapp.activities.R;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
 import android.os.AsyncTask;
