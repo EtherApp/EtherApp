@@ -35,13 +35,13 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayoutTab=0x7f080000;
-        public static final int action_settings=0x7f080016;
-        public static final int btnDeletePad=0x7f080015;
+        public static final int action_settings=0x7f080017;
+        public static final int btnDeletePad=0x7f080016;
         public static final int btnhrhr=0x7f08000c;
         public static final int btnsave=0x7f08000b;
-        public static final int imgLastEdited=0x7f080013;
-        public static final int imgRevCount=0x7f080011;
-        public static final int imgUsersCount=0x7f08000f;
+        public static final int imgLastEdited=0x7f080014;
+        public static final int imgRevCount=0x7f080012;
+        public static final int imgUsersCount=0x7f080010;
         public static final int item=0x7f08000d;
         public static final int padlist=0x7f080001;
         public static final int textView1=0x7f080002;
@@ -49,10 +49,11 @@ public final class R {
         public static final int textView3=0x7f080009;
         public static final int textView4=0x7f080003;
         public static final int textView5=0x7f080007;
-        public static final int txtLastEdited=0x7f080014;
-        public static final int txtPadId=0x7f08000e;
-        public static final int txtRevCount=0x7f080012;
-        public static final int txtUsersCount=0x7f080010;
+        public static final int txtApiId=0x7f08000e;
+        public static final int txtLastEdited=0x7f080015;
+        public static final int txtPadId=0x7f08000f;
+        public static final int txtRevCount=0x7f080013;
+        public static final int txtUsersCount=0x7f080011;
         public static final int txtapikey=0x7f08000a;
         public static final int txtapiname=0x7f080004;
         public static final int txtpadurl=0x7f080006;
@@ -63,7 +64,8 @@ public final class R {
         public static final int activity_padlist=0x7f030001;
         public static final int activity_settings=0x7f030002;
         public static final int activity_test_tab=0x7f030003;
-        public static final int padlist_item=0x7f030004;
+        public static final int apilist_item=0x7f030004;
+        public static final int padlist_item=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f070000;
