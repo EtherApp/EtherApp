@@ -16,12 +16,12 @@ public class GlobalConfig {
 	private static MainActivity ma;
 
 	public static PadAPI currentApi = null;
-	public static HashMap<String,PadAPI> apiList = new HashMap<String,PadAPI>();
+	public static HashMap<String,PadAPI> apiMap = new HashMap<String,PadAPI>();
 	private static int apiCount = -1;
 	private static DBHandler dbh = null;
 
 	public static boolean selectApi(String apiid){
-		PadAPI newapi = apiList.get(apiid);
+		PadAPI newapi = apiMap.get(apiid);
 		
 		if(newapi != null){
 			currentApi = newapi;
@@ -56,8 +56,8 @@ public class GlobalConfig {
 		
         //replace PadAPI object in local API list
         if(retval > 0){
-        	apiList.remove(api.getAPIID());
-        	apiList.put(api.getAPIID(), api);
+        	apiMap.remove(api.getAPIID());
+        	apiMap.put(api.getAPIID(), api);
         }
 		
 		return retval;
@@ -80,7 +80,9 @@ public class GlobalConfig {
         db.close(); //close DB connection
 		
         //insert into local API list
-        apiList.put(api.getAPIID(), api);        
+        apiMap.put(api.getAPIID(), api);
+        
+        //TODO: Was insert successful?
         
 		return retval;
 	}
@@ -97,7 +99,7 @@ public class GlobalConfig {
 		
         //delete API from local list if deletion from DB was successful
         if(retval > 0){
-    		apiList.remove(apiid);
+    		apiMap.remove(apiid);
         }
         
         return retval;
@@ -115,47 +117,33 @@ public class GlobalConfig {
 
 
 
-	public static void loadConfig(MainActivity mac){
-		ma = mac;
-		//globale config
+	public static boolean loadConfig(MainActivity mac){
+		ma  = mac;
 		dbh = new DBHandler(ma);
 		
-//		SharedPreferences glshared = ma.getSharedPreferences("etherapp_preferences", 0);
-//		currentApiID = glshared.getString("currentApiID", -1);
-//		apiCount = glshared.getInt("apiCount", -1);
-//		System.out.println(currentApiPos + " <--> " + apiCount);
-//		//api preferences
-		if(apiCount > 0){
-			for (int i = 0; i <= apiCount; i++) {
-				SharedPreferences apipref = ma.getSharedPreferences("etherapp_api" + i, 0);
-				String apiname = apipref.getString("APINAME", "");
-				String padurl = apipref.getString("PADURL", "");
-				String apikey = apipref.getString("APIKEY", "");
-				int port = apipref.getInt("PORT", 0);
-				System.out.println(apikey + " <-> " + padurl);
-				if(!apikey.isEmpty() && !padurl.isEmpty() && !apiname.isEmpty() && port != 0){
-					PadAPI pa = new PadAPI(apiname, padurl, port, apikey);
-					String apiid = pa.getAPIID();
-					if(currentApiPos == i){
-						currentApi = pa;
-					}
-					apiList.add(i,pa);
-				}
-				else{
-					System.out.println("del");
-					apiCount--;
-					if(apiCount == currentApiPos){
-						currentApiPos--;
-					}
-					apipref.edit().clear().commit();
-					
-					Editor editor = glshared.edit();
-					editor.putInt("currentApiPos", currentApiPos);
-					editor.putInt("apiCount", apiCount);
-					// und alles schreiben
-					editor.commit();
-				}
-			}
+		if(getApiCount() > 0){
+			String selectQuery = "SELECT apiname,apiurl,port,apikey,apiid FROM " + DBHandler.TABLE_PADAPI;
+			
+	        SQLiteDatabase db = dbh.getReadableDatabase();
+	        Cursor cursor = db.rawQuery(selectQuery, null);
+	 
+	        if (cursor.moveToFirst()) {
+	            do {
+	                PadAPI newapi = new PadAPI(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4));
+	                apiMap.put(newapi.getAPIID(), newapi);
+	                
+	                selectApi(newapi.getAPIID()); //TODO: get current API from preferences
+	            } while (cursor.moveToNext());
+	        }
+		
+	        
+			//TODO: (optional) if there's no current API, use first one
+	       
+			return true;
+			
+		}else{
+			return false; //no API exists
+			
 		}
 	}		
 }

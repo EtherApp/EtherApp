@@ -15,4 +15,8 @@ public class APIlistItem {
 	public String getApiName() {
 		return api.getAPINAME();
 	}
+	
+	public String getApiId() {
+		return api.getAPIID();
+	}
 }

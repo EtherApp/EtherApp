@@ -27,7 +27,8 @@ import de.etherapp.tasks.PadDataTask;
  * instance is being created in activity
  */
 public class APIlistBaseAdapter extends BaseAdapter implements OnClickListener{
-    Context context;
+	
+	Context context;
     List<APIlistItem> apilistItems; //list with all api list items (APIlistItem) in it
  
     public APIlistBaseAdapter(Context context, List<APIlistItem> items) {

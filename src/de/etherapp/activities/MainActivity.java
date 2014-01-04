@@ -26,20 +26,14 @@ public class MainActivity extends TabActivity {
 		tabHost = (TabHost)findViewById(android.R.id.tabhost);
 		
 		//try to restore the last preferences
-		GlobalConfig.loadConfig(this);
-
-		int apiCount = GlobalConfig.getApiCount();
-		//GlobalConfig.deleteApi(GlobalConfig.getApiCount());
-		int currentApiPos = GlobalConfig.getCurrentApiPos();
-
-		
-		if(apiCount > -1 && currentApiPos > -1){ //there is a config we could use
+		if(GlobalConfig.loadConfig(this)){
+			System.out.println("doing startup now");
 			startup();
-		}
-		else{ // no config get settings from user
+		}else{
+			System.out.println("starting settings activity now");
 			Intent intent = new Intent(this,APISettingsActivity.class);
-			intent.putExtra("selected", "-1");
-			startActivity(intent);
+			intent.putExtra("selected", "");
+			startActivity(intent);	
 		}
 	}
 

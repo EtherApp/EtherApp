@@ -29,11 +29,11 @@ public class TestTabActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		int max = GlobalConfig.getApiCount();
-		System.out.println("apicount: " + max);
-		for (int i = max; i > -1; i--) {
-			GlobalConfig.deleteApi(i);
-		}
+//		int max = GlobalConfig.getApiCount();
+//		System.out.println("apicount: " + max);
+//		for (int i = max; i > -1; i--) {
+//			GlobalConfig.deleteApi(i);
+//		}
 		System.out.println("Configs fucked up!");
 	}
 

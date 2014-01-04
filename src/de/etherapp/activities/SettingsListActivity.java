@@ -3,6 +3,7 @@ package de.etherapp.activities;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.etherapp.activities.R;
 import de.etherapp.adapters.APIlistBaseAdapter;
@@ -51,7 +52,7 @@ public class SettingsListActivity<T> extends Activity {
 	    switch (item.getItemId()) {
 	            case R.id.action_add:
 	            	Intent intent = new Intent(this,APISettingsActivity.class);
-	    			intent.putExtra("selected", "-1");
+	    			intent.putExtra("selected", "");
 	    			startActivity(intent);
 	                return true;
 	            case R.id.action_quit:
@@ -78,8 +79,8 @@ public class SettingsListActivity<T> extends Activity {
         
         
         //iterate through APIs and add them to the list
-        for (PadAPI thisapi : GlobalConfig.apiList) {
-        	APIlistItem item = new APIlistItem(thisapi);
+        for(PadAPI api : GlobalConfig.apiMap.values()){
+            APIlistItem item = new APIlistItem(api);
         	apilistItems.add(item);
         }
         
@@ -92,11 +93,15 @@ public class SettingsListActivity<T> extends Activity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 				
 				Intent intent = new Intent();
 				intent.setClassName(getPackageName(),getPackageName()+".APISettingsActivity");
-				intent.putExtra("selected", lv.getAdapter().getItem(arg2).toString());
+				
+				APIlistItem listitem = (APIlistItem) lv.getAdapter().getItem(pos);
+				System.out.println(listitem.getApiId()); //DEBUG
+				
+				intent.putExtra("selected", listitem.getApiId());
 				startActivity(intent);
 				System.out.println("click");
 			}

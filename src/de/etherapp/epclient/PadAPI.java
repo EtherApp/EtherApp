@@ -29,7 +29,7 @@ public class PadAPI {
 		//make ID
 		this.APIID = UUID.randomUUID().toString();
 		
-		client = new EPLiteClient(PADURL, APIKEY);
+		client = new EPLiteClient(PADURL + ":" + PORT, APIKEY);
 	}
 	
 	//constructor with given API id
@@ -40,7 +40,7 @@ public class PadAPI {
 		this.PORT    = port;
 		this.APIID   = apiid;
 		
-		client = new EPLiteClient(PADURL, APIKEY);
+		client = new EPLiteClient(PADURL + ":" + PORT, APIKEY);
 	}
 	
 
