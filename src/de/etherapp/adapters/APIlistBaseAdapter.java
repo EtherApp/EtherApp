@@ -18,7 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import de.etherapp.app.R;
+import de.etherapp.activities.R;
 import de.etherapp.beans.APIlistItem;
 import de.etherapp.tasks.PadDataTask;
 
@@ -59,11 +59,6 @@ public class APIlistBaseAdapter extends BaseAdapter implements OnClickListener{
         
         //set values to list item
         holder.txtApiId.setText(apilistItem.getApiName());  
-
-        //start loaders for asynchronous loading of metadata
-       	//new PadDataTask(holder.txtUsersCount, padlistItem).execute("usersCount");
-       	//new PadDataTask(holder.txtRevCount, padlistItem).execute("revCount");
-       	//new PadDataTask(holder.txtLastEdited, padlistItem).execute("lastEdited");
         
         return convertView;
     }

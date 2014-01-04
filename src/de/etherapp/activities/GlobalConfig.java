@@ -1,6 +1,7 @@
 package de.etherapp.activities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import android.content.SharedPreferences;
@@ -11,9 +12,9 @@ import de.etherapp.epclient.PadAPI;
 public class GlobalConfig {
 	private static MainActivity ma;
 
-	private static int currentApiPos = -1;
+	private static String currentApiID = null;
 	public  static PadAPI currentApi;
-	public static List<PadAPI> apiList = new ArrayList<PadAPI>();
+	public static HashMap<String,PadAPI> apiList = new HashMap<String,PadAPI>();
 	private static int apiCount = -1;
 
 	public static boolean selectApi(int pos){
@@ -94,7 +95,7 @@ public class GlobalConfig {
 		ma = mac;
 		//globale config
 		SharedPreferences glshared = ma.getSharedPreferences("etherapp_preferences", 0);
-		currentApiPos = glshared.getInt("currentApiPos", -1);
+		currentApiID = glshared.getString("currentApiID", -1);
 		apiCount = glshared.getInt("apiCount", -1);
 		System.out.println(currentApiPos + " <--> " + apiCount);
 		//api preferences
@@ -104,9 +105,11 @@ public class GlobalConfig {
 				String apiname = apipref.getString("APINAME", "");
 				String padurl = apipref.getString("PADURL", "");
 				String apikey = apipref.getString("APIKEY", "");
+				int port = apipref.getInt("PORT", 0);
 				System.out.println(apikey + " <-> " + padurl);
-				if(!apikey.isEmpty() && !padurl.isEmpty() && !apiname.isEmpty()){
-					PadAPI pa = new PadAPI(apiname, padurl, apikey);
+				if(!apikey.isEmpty() && !padurl.isEmpty() && !apiname.isEmpty() && port != 0){
+					PadAPI pa = new PadAPI(apiname, padurl, port, apikey);
+					String apiid = pa.getAPIID();
 					if(currentApiPos == i){
 						currentApi = pa;
 					}

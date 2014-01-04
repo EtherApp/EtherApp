@@ -1,9 +1,15 @@
 package de.etherapp.activities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.etherapp.activities.R;
+import de.etherapp.adapters.APIlistBaseAdapter;
+import de.etherapp.adapters.PadlistBaseAdapter;
+import de.etherapp.beans.APIlistItem;
+import de.etherapp.beans.PadlistItem;
+import de.etherapp.epclient.Pad;
 import de.etherapp.epclient.PadAPI;
 import android.os.Bundle;
 import android.app.Activity;
@@ -20,6 +26,9 @@ import android.widget.ListView;
 
 public class SettingsListActivity<T> extends Activity {
 
+	ListView lv;
+	List<APIlistItem> apilistItems;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,16 +69,26 @@ public class SettingsListActivity<T> extends Activity {
 	}
 	
 	private void startup(){
-		List valueList = new ArrayList<String>();
-		List<PadAPI> lp = GlobalConfig.apiList;
 		
-		for (int i = 0; i < lp.size(); i++) {
-			valueList.add(i);
-		}
+		//get Listview we want to fill
+        lv = (ListView) findViewById(R.id.apilist);
+        
+        //array list with all padlist items in it
+        apilistItems = new ArrayList<APIlistItem>();
+        
+        
+        //iterate through APIs and add them to the list
+        for (PadAPI thisapi : GlobalConfig.apiList) {
+        	APIlistItem item = new APIlistItem(thisapi);
+        	apilistItems.add(item);
+        }
+        
+        //set values to the adapter
+        APIlistBaseAdapter adapter = new APIlistBaseAdapter(this, apilistItems);
+        
+        //apply adapter to the ListView
+        lv.setAdapter(adapter); 
 		
-		ListAdapter adapter = new ArrayAdapter<T>(getApplicationContext(), android.R.layout.simple_list_item_1, valueList);
-		final ListView lv = (ListView)findViewById(R.id.apilist);
-		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

@@ -74,9 +74,6 @@
             android:background="@drawable/iconmonstr_x_mark_icon_32"
             android:layout_alignParentRight="true"
             android:contentDescription="@string/btnDeletePad" />
-
-        
-        
     </RelativeLayout>
 
 </LinearLayout>
