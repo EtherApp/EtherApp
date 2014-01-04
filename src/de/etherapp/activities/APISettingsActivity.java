@@ -67,6 +67,10 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
+		
+		//TODO: hier das komplette PadAPI-Objekt bauen und an updateAPI() Ÿbergeben
+		
+		
 		if(v == btnsave){
 			if(selected.equals("-1")){
 				String apiname = tapiname.getText().toString();

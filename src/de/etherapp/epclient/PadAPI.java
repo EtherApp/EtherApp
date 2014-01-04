@@ -19,6 +19,7 @@ public class PadAPI {
 	
 	private HashMap<String, Pad> padhash = null;
 	
+	//constructor with new (random) API id
 	public PadAPI(String apiname, String padurl, int port, String apikey){
 		this.APINAME = apiname;
 		this.APIKEY  = apikey;
@@ -26,10 +27,22 @@ public class PadAPI {
 		this.PORT    = port;
 		
 		//make ID
-		APIID = UUID.randomUUID().toString();
+		this.APIID = UUID.randomUUID().toString();
 		
 		client = new EPLiteClient(PADURL, APIKEY);
 	}
+	
+	//constructor with given API id
+	public PadAPI(String apiname, String padurl, int port, String apikey, String apiid){
+		this.APINAME = apiname;
+		this.APIKEY  = apikey;
+		this.PADURL  = padurl;
+		this.PORT    = port;
+		this.APIID   = apiid;
+		
+		client = new EPLiteClient(PADURL, APIKEY);
+	}
+	
 
 	public void init() throws NetworkErrorException{
 		new PadThread(this);
