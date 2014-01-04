@@ -13,7 +13,7 @@ public class GlobalConfig {
 
 	private static int currentApiPos = -1;
 	public  static PadAPI currentApi;
-	private static List<PadAPI> apiList = new ArrayList<PadAPI>();
+	public static List<PadAPI> apiList = new ArrayList<PadAPI>();
 	private static int apiCount = -1;
 
 	public static boolean selectApi(int pos){
@@ -22,24 +22,46 @@ public class GlobalConfig {
 		}
 		else{
 			currentApiPos = pos;
-			currentApi = apiList.get(pos);	
+			currentApi = apiList.get(pos);
+			
+			SharedPreferences.Editor gleditor = ma.getSharedPreferences("etherapp_preferences", 0).edit();
+			gleditor.putInt("currentApiPos", currentApiPos);
+			// und alles schreiben
+			gleditor.commit();
 			return true;
 		}
 	}
 
+	
+	public static boolean updateApi(int pos,String apiname,String apiurl,String apikey){
+		PadAPI api = apiList.get(pos);
+
+		SharedPreferences apipref = ma.getSharedPreferences("etherapp_api" + apiCount , 0);
+		Editor editor = apipref.edit();
+		editor.putString("APINAME", apiname);
+		editor.putString("PADURL", apiurl);
+		editor.putString("APIKEY", apikey);
+		// und alles schreiben
+		editor.commit();
+		return true;
+	}
+	
 	public static int putNewApi(PadAPI api){
 		apiList.add(++apiCount,api);
 
 		SharedPreferences apipref = ma.getSharedPreferences("etherapp_api" + apiCount , 0);
 		Editor editor = apipref.edit();
 		editor.putString("APINAME", api.getAPINAME());
-		editor.putString("PADURL", api.getPADURL());
+		editor.putString("PADURL", api.getAPIURL());
 		editor.putString("APIKEY", api.getAPIKEY());
 		// und alles schreiben
 		editor.commit();
 
 		SharedPreferences.Editor gleditor = ma.getSharedPreferences("etherapp_preferences", 0).edit();
 		gleditor.putInt("apiCount", apiCount);
+		if(apiCount == 0){
+			gleditor.putInt("currentApiPos", 0);
+		}
 		// und alles schreiben
 		gleditor.commit();
 		return apiCount;

@@ -12,5 +12,6 @@
     <string name="title_activity_test_tab">TestTabActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_settings_list">SettingsListActivity</string>
 
 </resources>

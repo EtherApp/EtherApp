@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.etherapp.app"
+    package="de.etherapp.activities"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -39,6 +39,10 @@
         <activity
             android:name="de.etherapp.activities.APISettingsActivity"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="de.etherapp.activities.SettingsListActivity"
+            android:label="@string/title_activity_settings_list" >
         </activity>
     </application>
 

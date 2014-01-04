@@ -1,6 +1,6 @@
 package de.etherapp.activities;
 
-import de.etherapp.app.R;
+import de.etherapp.activities.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

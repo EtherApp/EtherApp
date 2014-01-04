@@ -11,7 +11,7 @@ import android.widget.ListView;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
 import de.etherapp.adapters.PadlistBaseAdapter;
-import de.etherapp.app.R;
+import de.etherapp.activities.R;
 
 
 public class PadlistActivity extends Activity {

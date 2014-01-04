@@ -20,7 +20,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import de.etherapp.app.R;
+import de.etherapp.activities.R;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.tasks.PadDataTask;
 
