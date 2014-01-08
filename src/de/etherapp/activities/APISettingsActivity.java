@@ -28,9 +28,12 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		
+		//the API ID given from the calling activity
+		//is empty if new API shall be created
 		Intent intent = getIntent();
 		selected = intent.getStringExtra("selected");
 		
+		//the text fields
 		tapiname = (EditText) findViewById(R.id.txtapiname);
 		tpadurl  = (EditText) findViewById(R.id.txtpadurl);
 		tport    = (EditText) findViewById(R.id.txtport);
@@ -43,24 +46,24 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		btnselect = (Button) this.findViewById(R.id.btnselectapi);
 
 		
-		if(!selected.isEmpty()){
-			btndelete.setEnabled(true);
-			btnselect.setEnabled(true);
+		if(!selected.isEmpty()){ //if a API ID is given (user wants to update API)
+			//buttons are hidden - show them			
+			btndelete.setVisibility(View.VISIBLE);
+			btnselect.setVisibility(View.VISIBLE);
 			
+			//and give them some click listeners
+			btndelete.setOnClickListener(this);
+			btnselect.setOnClickListener(this);
+			
+			//get the desired API
 			PadAPI thisapi = GlobalConfig.apiMap.get(selected);
 			
-			System.out.println("selected:" + thisapi.getAPIKEY()); //DEBUG
-			
-			
+			//fill text fields with values from API
 			tapiname.setText(thisapi.getAPINAME());
 			tpadurl.setText(thisapi.getAPIURL());
 			tport.setText("" + thisapi.getPORT()); //string conversion needed
 			tapikey.setText(thisapi.getAPIKEY());
 		}
-		
-		btndelete.setOnClickListener(this);
-		btnselect.setOnClickListener(this);
-
 	}
 
 	@Override

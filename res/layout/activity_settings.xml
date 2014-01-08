@@ -108,14 +108,14 @@
         android:id="@+id/btndeleteapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:enabled="false"
+        android:visibility="invisible"
         android:text="@string/btndeleteapi" />
 
     <Button
         android:id="@+id/btnselectapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:enabled="false"
+        android:visibility="invisible"
         android:text="@string/btnselectapi" />
 
 </LinearLayout>
