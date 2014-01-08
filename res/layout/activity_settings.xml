@@ -32,11 +32,9 @@
             android:id="@+id/txtapiname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:hint="ShowPad"
-            android:text="test" >
-
-            <requestFocus />
-        </EditText>
+            android:text="test" />
 
     </LinearLayout>
 
@@ -75,7 +73,6 @@
             android:id="@+id/txtport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="9001"
             android:text="9001" />
 
     </LinearLayout>

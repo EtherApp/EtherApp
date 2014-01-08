@@ -30,13 +30,11 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		
 		Intent intent = getIntent();
 		selected = intent.getStringExtra("selected");
-
-		tapiname = (EditText) findViewById(R.id.txtapiname);
-		tpadurl = (EditText) findViewById(R.id.txtpadurl);
-		tport = (EditText) findViewById(R.id.txtport);
-		tapikey = (EditText) findViewById(R.id.txtapikey);
 		
-		System.out.println("created fields now"); //DEBUG
+		tapiname = (EditText) findViewById(R.id.txtapiname);
+		tpadurl  = (EditText) findViewById(R.id.txtpadurl);
+		tport    = (EditText) findViewById(R.id.txtport);
+		tapikey  = (EditText) findViewById(R.id.txtapikey);
 		
 		btnsave = (Button) this.findViewById(R.id.btnsaveapi);
 		btnsave.setOnClickListener(this);
@@ -51,9 +49,12 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 			
 			PadAPI thisapi = GlobalConfig.apiMap.get(selected);
 			
+			System.out.println("selected:" + thisapi.getAPIKEY()); //DEBUG
+			
+			
 			tapiname.setText(thisapi.getAPINAME());
 			tpadurl.setText(thisapi.getAPIURL());
-			tport.setText(thisapi.getPORT());
+			tport.setText("" + thisapi.getPORT()); //string conversion needed
 			tapikey.setText(thisapi.getAPIKEY());
 		}
 		
@@ -72,11 +73,8 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		
-		//TODO: hier das komplette PadAPI-Objekt bauen und an updateAPI() Ÿbergeben
-		
-		
 		if(v == btnsave){
-			if(selected.isEmpty()){ //new API
+			if(selected.isEmpty()){ //new API shall be created
 				String apiname = tapiname.getText().toString();
 				String apiurl  = tpadurl.getText().toString();
 				int port       = Integer.parseInt(tport.getText().toString());
@@ -85,7 +83,7 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 				//DEBUG
 				System.out.println(apiname + "  " + apiurl + "  " + port + "   " + apikey);
 				
-				//INIT API
+				//build PadAPI object from data
 				PadAPI pa = new PadAPI(apiname, apiurl, port, apikey);
 		        GlobalConfig.putNewApi(pa);
 		        
