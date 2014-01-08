@@ -13,5 +13,13 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_settings_list">SettingsListActivity</string>
+    <string name="btnselectapi">Select API</string>
+    <string name="btndeleteapi">Delete API</string>
+    <string name="btnsaveapi">Save</string>
+    <string name="label_name">Name:</string>
+    <string name="label_url">URL:</string>
+    <string name="label_port">Port:</string>
+    <string name="label_apikey">API-Key:</string>
+    <string name="label_apiedit">Enter your EtherPad API details</string>
 
 </resources>

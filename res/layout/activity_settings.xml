@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Enter your EtherPad details"
+        android:text="@string/label_apiedit"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -26,14 +26,14 @@
             android:id="@+id/textView4"
             android:layout_width="62dp"
             android:layout_height="wrap_content"
-            android:text="Name:" />
+            android:text="@string/label_name" />
 
         <EditText
             android:id="@+id/txtapiname"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="ShowPad"
             android:text="test" />
 
     </LinearLayout>
@@ -47,13 +47,13 @@
             android:id="@+id/textView2"
             android:layout_width="62dp"
             android:layout_height="wrap_content"
-            android:text="URL:" />
+            android:text="@string/label_url" />
 
         <EditText
             android:id="@+id/txtpadurl"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="http://pad.shownot.es"
             android:text="http://fastreboot.de" />
 
     </LinearLayout>
@@ -67,10 +67,11 @@
             android:id="@+id/textView5"
             android:layout_width="62dp"
             android:layout_height="wrap_content"
-            android:text="Port:" />
+            android:text="@string/label_port" />
 
         <EditText
             android:id="@+id/txtport"
+            android:inputType="numberSigned"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="9001" />
@@ -86,13 +87,13 @@
             android:id="@+id/textView3"
             android:layout_width="62dp"
             android:layout_height="wrap_content"
-            android:text="APIKey:" />
+            android:text="@string/label_apikey" />
 
         <EditText
             android:id="@+id/txtapikey"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="dghdg3e32h83e"
             android:text="8EkKqoT0CR28PcRDpF311XLtspAchXuM" />
 
     </LinearLayout>
@@ -101,20 +102,20 @@
         android:id="@+id/btnsaveapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save" />
+        android:text="@string/btnsaveapi" />
 
     <Button
         android:id="@+id/btndeleteapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="Delete" />
+        android:text="@string/btndeleteapi" />
 
     <Button
         android:id="@+id/btnselectapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="Select" />
+        android:text="@string/btnselectapi" />
 
 </LinearLayout>
