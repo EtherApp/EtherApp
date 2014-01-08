@@ -88,6 +88,7 @@ public class GlobalConfig {
 	}
 
 	public static long deleteApi(String apiid){
+		//do not delete current API
 		if(currentApi.getAPIID() == apiid){
 			return -1;
 		}

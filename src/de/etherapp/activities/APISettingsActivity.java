@@ -39,12 +39,14 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		tport    = (EditText) findViewById(R.id.txtport);
 		tapikey  = (EditText) findViewById(R.id.txtapikey);
 		
+		//the buttons
 		btnsave = (Button) this.findViewById(R.id.btnsaveapi);
-		btnsave.setOnClickListener(this);
-		
 		btndelete = (Button) this.findViewById(R.id.btndeleteapi);
 		btnselect = (Button) this.findViewById(R.id.btnselectapi);
 
+		//save button is always needed, so give him a click listener
+		btnsave.setOnClickListener(this);
+		
 		
 		if(!selected.isEmpty()){ //if a API ID is given (user wants to update API)
 			//buttons are hidden - show them			

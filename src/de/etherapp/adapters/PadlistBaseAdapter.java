@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import de.etherapp.activities.R;
 import de.etherapp.beans.PadlistItem;
+import de.etherapp.epclient.Pad;
 import de.etherapp.tasks.PadDataTask;
 
 /*
@@ -68,7 +69,7 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
  
         //item to fill with values
         PadlistItem padlistItem = (PadlistItem) getItem(position);
-        
+               
         //set values to list item
         holder.txtPadId.setText(padlistItem.getPadName());  
 
@@ -77,7 +78,52 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
        	new PadDataTask(holder.txtRevCount, padlistItem).execute("revCount");
        	new PadDataTask(holder.txtLastEdited, padlistItem).execute("lastEdited");
         
+       	//delete button
+       	holder.delbtn.setId(position); //give it the list position (the current list item is recognized by the position)
+       	holder.delbtn.setOnClickListener(new OnClickListener() { //implement a "flying" click listener
+			
+       		@Override
+        	public void onClick(View v) {
+        		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        		
+        		//get padlistItem where we can find the desired pad
+        		PadlistItem item = padlistItems.get(v.getId());
+        		        		
+        		//set title
+        		alertDialogBuilder.setTitle("Delete \"" + item.getPadName()+ "\"");
+         
+        		//set dialog message
+        		alertDialogBuilder.setMessage("Are you sure?");
+        		alertDialogBuilder.setCancelable(false);
+        		
+        		alertDialogBuilder.setPositiveButton("Delete",new DialogInterface.OnClickListener() {
+        			public void onClick(DialogInterface dialog,int id) {
+        				dialog.cancel();
+        			}
+        		});
+        			
+        		alertDialogBuilder.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+        			public void onClick(DialogInterface dialog,int id) {
+        				// if this button is clicked, just close
+        				// the dialog box and do nothing
+        				dialog.cancel();
+        			}
+        		});
+         
+        		// create alert dialog
+        		AlertDialog alertDialog = alertDialogBuilder.create();
+         
+        		// show it
+        		alertDialog.show();
+        	} 
+		});
+       	
+       	
+       	
+       	
+       	
         return convertView;
+
     }
  
     @Override
@@ -97,36 +143,8 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-
-		//how to get the item?
+		// TODO Auto-generated method stub
 		
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-				
-		// set title
-		alertDialogBuilder.setTitle("Delete $PADNAME");
- 
-		// set dialog message
-		alertDialogBuilder.setMessage("Are you sure?");
-		alertDialogBuilder.setCancelable(false);
-		
-		alertDialogBuilder.setPositiveButton("Delete",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-			}
-		});
-			
-		alertDialogBuilder.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				// if this button is clicked, just close
-				// the dialog box and do nothing
-				dialog.cancel();
-			}
-		});
- 
-		// create alert dialog
-		AlertDialog alertDialog = alertDialogBuilder.create();
- 
-		// show it
-		alertDialog.show();
 	}
+
 }
