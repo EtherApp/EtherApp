@@ -26,13 +26,13 @@ public class PadAPI {
 		this.PADURL  = padurl;
 		this.PORT    = port;
 		
-		//make ID
+		//generate new random ID
 		this.APIID = UUID.randomUUID().toString();
 		
 		client = new EPLiteClient(PADURL + ":" + PORT, APIKEY);
 	}
 	
-	//constructor with given API id
+	//constructor with given API id (for API update)
 	public PadAPI(String apiname, String padurl, int port, String apikey, String apiid){
 		this.APINAME = apiname;
 		this.APIKEY  = apikey;
@@ -52,6 +52,7 @@ public class PadAPI {
 		}
 	}
 	
+	//sets a padlist to work with
 	public void setPadList(HashMap<String,Pad> pad){
 		if(pad != null){
 			ready = true;
@@ -61,6 +62,8 @@ public class PadAPI {
 			error = true;
 		}
 	}
+	
+	//getters & setters
 	
 	public HashMap<String, Pad> getPadList() {
 		return padhash;

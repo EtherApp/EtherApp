@@ -18,6 +18,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.ImageView;
+import de.etherapp.activities.GlobalConfig;
 import de.etherapp.activities.R;
 import de.etherapp.beans.APIlistItem;
 import de.etherapp.tasks.PadDataTask;
@@ -38,6 +40,7 @@ public class APIlistBaseAdapter extends BaseAdapter implements OnClickListener{
  
     private class ViewHolder {
         TextView txtApiId = null;
+        ImageView imgApiSelected = null;
     }
  
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -49,6 +52,7 @@ public class APIlistBaseAdapter extends BaseAdapter implements OnClickListener{
             holder = new ViewHolder();
             
             holder.txtApiId = (TextView) convertView.findViewById(R.id.txtApiId);
+            holder.imgApiSelected = (ImageView) convertView.findViewById(R.id.imgApiSelected);
             convertView.setTag(holder);
         }
         else {
@@ -59,7 +63,12 @@ public class APIlistBaseAdapter extends BaseAdapter implements OnClickListener{
         APIlistItem apilistItem = (APIlistItem) getItem(position);
         
         //set values to list item
-        holder.txtApiId.setText(apilistItem.getApiName());  
+        holder.txtApiId.setText(apilistItem.getApiName());
+
+        //if this is the currently selected API, show icon
+        if(apilistItem.getApiId() == GlobalConfig.currentApi.getAPIID()){
+        	holder.imgApiSelected.setVisibility(View.VISIBLE);
+        }
         
         return convertView;
     }
@@ -82,35 +91,6 @@ public class APIlistBaseAdapter extends BaseAdapter implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 
-		//how to get the item?
-		
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-				
-		// set title
-		alertDialogBuilder.setTitle("Delete $PADNAME");
- 
-		// set dialog message
-		alertDialogBuilder.setMessage("Are you sure?");
-		alertDialogBuilder.setCancelable(false);
-		
-		alertDialogBuilder.setPositiveButton("Delete",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-			}
-		});
-			
-		alertDialogBuilder.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				// if this button is clicked, just close
-				// the dialog box and do nothing
-				dialog.cancel();
-			}
-		});
- 
-		// create alert dialog
-		AlertDialog alertDialog = alertDialogBuilder.create();
- 
-		// show it
-		alertDialog.show();
+	
 	}
 }

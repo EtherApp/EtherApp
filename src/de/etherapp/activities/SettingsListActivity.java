@@ -99,8 +99,7 @@ public class SettingsListActivity<T> extends Activity {
 				intent.setClassName(getPackageName(),getPackageName()+".APISettingsActivity");
 				
 				APIlistItem listitem = (APIlistItem) lv.getAdapter().getItem(pos);
-				System.out.println(listitem.getApiId()); //DEBUG
-				
+								
 				intent.putExtra("selected", (String)listitem.getApiId());
 				System.out.println(listitem.getApiId());
 				

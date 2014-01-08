@@ -94,7 +94,6 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		        this.finish();
 			}
 			else{ //edit existing API
-				System.out.println("Wanna create new API now from activity!");
 				String apiname = tapiname.getText().toString();
 				String apiurl  = tpadurl.getText().toString();
 				int port       = Integer.parseInt(tport.getText().toString());
@@ -111,7 +110,6 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 				//select the updated API for use
 				GlobalConfig.selectApi(pa.getAPIID());
 				
-		        System.out.println("updated " + pa.getAPINAME());
 		        this.finish();
 			}
 		}

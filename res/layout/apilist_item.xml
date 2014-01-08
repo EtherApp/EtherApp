@@ -3,7 +3,7 @@
     android:id="@+id/item"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="10dp" >
 
     <TextView
@@ -12,6 +12,17 @@
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="testetsttest" />
+    
+    <ImageView
+            android:id="@+id/imgApiSelected"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/iconmonstr_check_mark_6_icon_32"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:visibility="invisible"
+            android:contentDescription="@string/imgApiSelected" />
  
 </LinearLayout>

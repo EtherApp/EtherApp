@@ -27,12 +27,12 @@ public class MainActivity extends TabActivity {
 		
 		//try to restore the last preferences
 		if(GlobalConfig.loadConfig(this)){
-			System.out.println("doing startup now");
+			//recent config has been loaded - start now
 			startup();
 		}else{
-			System.out.println("starting settings activity now");
-			Intent intent = new Intent(this,APISettingsActivity.class);
-			intent.putExtra("selected", "");
+			//no API has been created yet - directly switching to API creation dialog
+			Intent intent = new Intent(this, APISettingsActivity.class);
+			intent.putExtra("selected", ""); //put empty string to intend creation of new API
 			startActivity(intent);	
 		}
 	}
@@ -79,17 +79,19 @@ public class MainActivity extends TabActivity {
 			while(!GlobalConfig.currentApi.isReady()){}
 		}
 		
-		//tabHost.getTabWidget().removeView(tabHost.getTabWidget().getChildAt(0));
+		
+		//TAB INITIALIZATION
+		
 		tabHost.getTabWidget().removeAllViews();
 
 		//get tab, set tab name and activity to be loaded, add tab to tabhost
 		tab1 = tabHost.newTabSpec("padlist");
-		tab1.setIndicator("Pads");
+		tab1.setIndicator(getString(R.string.tab_pads));
 		tab1.setContent(new Intent(this,PadlistActivity.class));
 		tabHost.addTab(tab1);
 
 		tab2 = tabHost.newTabSpec("testtab");
-		tab2.setIndicator("TESTTAB");
+		tab2.setIndicator(getString(R.string.tab_test));
 		tab2.setContent(new Intent(this,TestTabActivity.class));
 		tabHost.addTab(tab2);
 	}
