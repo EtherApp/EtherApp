@@ -148,8 +148,7 @@ public class GlobalConfig {
 	        }else{
 	        	selectApi(lastapiid);
 	        }
-	        
-	        
+
 	        db.close();
 	        
 			return true;

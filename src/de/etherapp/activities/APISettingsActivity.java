@@ -49,13 +49,15 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		
 		
 		if(!selected.isEmpty()){ //if a API ID is given (user wants to update API)
-			//buttons are hidden - show them			
-			btndelete.setVisibility(View.VISIBLE);
-			btnselect.setVisibility(View.VISIBLE);
-			
-			//and give them some click listeners
-			btndelete.setOnClickListener(this);
-			btnselect.setOnClickListener(this);
+			//show delete and select buttons if this is not the selected API
+			if(!GlobalConfig.currentApi.getAPIID().equals(selected)){
+				btndelete.setVisibility(View.VISIBLE);
+				btnselect.setVisibility(View.VISIBLE);
+				
+				//and give them some click listeners
+				btndelete.setOnClickListener(this);
+				btnselect.setOnClickListener(this);
+			}
 			
 			//get the desired API
 			PadAPI thisapi = GlobalConfig.apiMap.get(selected);
