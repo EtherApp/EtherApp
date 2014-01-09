@@ -40,9 +40,7 @@ import de.etherapp.tasks.PadDataTask;
 public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
     Context context;
     List<PadlistItem> padlistItems; //list with all padlist items (PadlistItem) in it
-    View clickedView;
     int clickedPos;
-    PadlistBaseAdapter me;
  
     public PadlistBaseAdapter(Context context, List<PadlistItem> items) {
         this.context = context;
@@ -95,19 +93,18 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
         
        	//delete button
         holder.delbtn.setId(position); //give it the list position (the current list item is recognized by the position)
-       	holder.delbtn.setOnClickListener(new OnClickListener() { //implement a "flying" click listener
+       	
+        holder.delbtn.setOnClickListener(new OnClickListener() { //implement a "flying" click listener
 
        		@Override
         	public void onClick(View v) {
-       			
         		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        		clickedPos = v.getId();
         		
         		//get padlistItem where we can find the desired pad
-        		PadlistItem item = (PadlistItem)getItem(v.getId());
-        		clickedView = v;
-        		clickedPos = v.getId();
+        		PadlistItem item = (PadlistItem)getItem(clickedPos);
    		
-        		//set title
+        		//set dialog title
         		alertDialogBuilder.setTitle("Delete pad");
          
         		//set dialog message
@@ -127,7 +124,7 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
         				}
         				
         				//delete from local list
-        				//padlistItems.remove(clickedPos);
+        				//padlistItems.remove(clickedPos); //not needed because whole activity is being reloaded in next step
         				
         				//restart MainActivity
         				//TODO: Only reload list or inner activity
@@ -137,8 +134,7 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
         			
         		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
         			public void onClick(DialogInterface dialog, int id) {
-        				//if this button is clicked, just close
-        				//the dialog box and do nothing
+        				//if this button is clicked, just close the dialog box and do nothing
         				dialog.cancel();
         			}
         		});
