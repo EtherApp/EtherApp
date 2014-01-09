@@ -13,7 +13,7 @@ import android.widget.TabHost.TabSpec;
 
 public class MainActivity extends TabActivity {
 
-	TabHost tabHost = null;
+	public TabHost tabHost = null;
 	TabSpec tab1 = null;
 	TabSpec tab2 = null;
 	

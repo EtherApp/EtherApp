@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class GlobalConfig {
-	private static MainActivity ma;
+	public static MainActivity ma;
 
 	public static PadAPI currentApi = null;
 	public static HashMap<String,PadAPI> apiMap = new HashMap<String,PadAPI>();

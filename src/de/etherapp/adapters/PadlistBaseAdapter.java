@@ -1,14 +1,19 @@
 package de.etherapp.adapters;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.etherpad_lite_client.EPLiteException;
 
 import android.app.Activity;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,8 +24,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+import de.etherapp.activities.GlobalConfig;
 import de.etherapp.activities.R;
+import de.etherapp.beans.APIlistItem;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
 import de.etherapp.tasks.PadDataTask;
@@ -32,6 +40,9 @@ import de.etherapp.tasks.PadDataTask;
 public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
     Context context;
     List<PadlistItem> padlistItems; //list with all padlist items (PadlistItem) in it
+    View clickedView;
+    int clickedPos;
+    PadlistBaseAdapter me;
  
     public PadlistBaseAdapter(Context context, List<PadlistItem> items) {
         this.context = context;
@@ -43,7 +54,7 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
         TextView txtUsersCount = null;
         TextView txtRevCount   = null;
         TextView txtLastEdited = null;
-        ImageButton delbtn = null;
+        ImageButton delbtn     = null;
     }
  
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -69,6 +80,10 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
  
         //item to fill with values
         PadlistItem padlistItem = (PadlistItem) getItem(position);
+        
+        System.out.println(position + " " + padlistItem.getPadId());
+        
+   
                
         //set values to list item
         holder.txtPadId.setText(padlistItem.getPadName());  
@@ -79,41 +94,59 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
        	new PadDataTask(holder.txtLastEdited, padlistItem).execute("lastEdited");
         
        	//delete button
-       	holder.delbtn.setId(position); //give it the list position (the current list item is recognized by the position)
+        holder.delbtn.setId(position); //give it the list position (the current list item is recognized by the position)
        	holder.delbtn.setOnClickListener(new OnClickListener() { //implement a "flying" click listener
-			
+
        		@Override
         	public void onClick(View v) {
+       			
         		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         		
         		//get padlistItem where we can find the desired pad
-        		PadlistItem item = padlistItems.get(v.getId());
-        		        		
+        		PadlistItem item = (PadlistItem)getItem(v.getId());
+        		clickedView = v;
+        		clickedPos = v.getId();
+   		
         		//set title
-        		alertDialogBuilder.setTitle("Delete \"" + item.getPadName()+ "\"");
+        		alertDialogBuilder.setTitle("Delete pad");
          
         		//set dialog message
-        		alertDialogBuilder.setMessage("Are you sure?");
+        		alertDialogBuilder.setMessage("Pad \"" + item.getPadName() + "\" will be deleted. Continue?");
         		alertDialogBuilder.setCancelable(false);
         		
         		alertDialogBuilder.setPositiveButton("Delete",new DialogInterface.OnClickListener() {
-        			public void onClick(DialogInterface dialog,int id) {
-        				dialog.cancel();
+        			public void onClick(DialogInterface dialog, int id) {
+        				//get list item from given list position
+        				PadlistItem item = padlistItems.get(clickedPos);
+        				
+        				//delete pad online
+        				try{
+        					GlobalConfig.currentApi.getClient().deletePad(item.getPadId());
+        				}catch(EPLiteException e){
+        					System.out.println(e);
+        				}
+        				
+        				//delete from local list
+        				//padlistItems.remove(clickedPos);
+        				
+        				//restart MainActivity
+        				//TODO: Only reload list or inner activity
+        				GlobalConfig.ma.recreate();
         			}
         		});
         			
-        		alertDialogBuilder.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-        			public void onClick(DialogInterface dialog,int id) {
-        				// if this button is clicked, just close
-        				// the dialog box and do nothing
+        		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        			public void onClick(DialogInterface dialog, int id) {
+        				//if this button is clicked, just close
+        				//the dialog box and do nothing
         				dialog.cancel();
         			}
         		});
          
-        		// create alert dialog
+        		//create alert dialog
         		AlertDialog alertDialog = alertDialogBuilder.create();
          
-        		// show it
+        		//show it
         		alertDialog.show();
         	} 
 		});
@@ -146,5 +179,6 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	
 }
