@@ -1,12 +1,7 @@
 package de.etherapp.activities;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 import android.content.ContentValues;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import de.etherapp.epclient.PadAPI;
 import de.etherapp.sql.DBHandler;
 import android.database.Cursor;

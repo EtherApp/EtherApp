@@ -1,28 +1,20 @@
 package de.etherapp.adapters;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import android.app.Activity;
-import android.app.ActionBar.OnNavigationListener;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.ImageView;
 import de.etherapp.activities.GlobalConfig;
 import de.etherapp.activities.R;
 import de.etherapp.beans.APIlistItem;
-import de.etherapp.tasks.PadDataTask;
+
 
 /*
  * Base adapter for showing API list

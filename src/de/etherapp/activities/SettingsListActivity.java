@@ -1,28 +1,20 @@
 package de.etherapp.activities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import de.etherapp.activities.R;
 import de.etherapp.adapters.APIlistBaseAdapter;
-import de.etherapp.adapters.PadlistBaseAdapter;
 import de.etherapp.beans.APIlistItem;
-import de.etherapp.beans.PadlistItem;
-import de.etherapp.epclient.Pad;
 import de.etherapp.epclient.PadAPI;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class SettingsListActivity<T> extends Activity {
