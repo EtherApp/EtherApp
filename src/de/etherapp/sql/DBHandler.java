@@ -8,7 +8,7 @@ public class DBHandler extends SQLiteOpenHelper {
  
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
  
     //database Name
     private static final String DATABASE_NAME = "etherapp";
@@ -21,11 +21,10 @@ public class DBHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
  
-    // Creating Tables
+    //Creating Tables
     @Override
-    public void onCreate(SQLiteDatabase db) {
-    	System.out.println("creating tables now");
-    	
+    public void onCreate(SQLiteDatabase db){
+    	//create SQL tables
     	db.execSQL("CREATE TABLE " + TABLE_PADAPI + "(" +
     		"apiid VARCHAR(64) PRIMARY KEY," +
     		"apiname VARCHAR(255) NOT NULL," +
@@ -39,6 +38,13 @@ public class DBHandler extends SQLiteOpenHelper {
         	"name VARCHAR(255) PRIMARY KEY," +
         	"value VARCHAR(255) NOT NULL" +
         ");");
+    	
+    	//insert initial key for current API information
+    	db.execSQL("INSERT INTO " + TABLE_PREF + " VALUES (" +
+            	"'currentApi'," +
+    			"'none'" +
+        ");");
+    	
     }
  
     // Upgrading database

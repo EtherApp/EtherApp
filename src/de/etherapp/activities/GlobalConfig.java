@@ -19,7 +19,14 @@ public class GlobalConfig {
 		PadAPI newapi = apiMap.get(apiid);
 		
 		if(newapi != null){
+			//assign locally
 			currentApi = newapi;
+			
+			//update in database
+			SQLiteDatabase db = dbh.getWritableDatabase();
+			db.execSQL("UPDATE " + DBHandler.TABLE_PREF + " SET value = '" + currentApi.getAPIID() + "' WHERE name = 'currentApi';");
+			db.close();
+			
 			return true;
 		}else{
 			return false;
@@ -118,23 +125,33 @@ public class GlobalConfig {
 		dbh = new DBHandler(ma);
 		
 		if(getApiCount() > 0){
+			Cursor cursor = null;
+			String lastapiid = null;
+			
 			String selectQuery = "SELECT apiname,apiurl,port,apikey,apiid FROM " + DBHandler.TABLE_PADAPI;
 			
 	        SQLiteDatabase db = dbh.getReadableDatabase();
-	        Cursor cursor = db.rawQuery(selectQuery, null);
+	        cursor = db.rawQuery(selectQuery, null);
 	 
-	        if (cursor.moveToFirst()) {
-	            do {
+	        if(cursor.moveToFirst()){
+	            do{
 	                PadAPI newapi = new PadAPI(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4));
 	                apiMap.put(newapi.getAPIID(), newapi);
-	                
-	                selectApi(newapi.getAPIID()); //TODO: get current API from preferences
-	            } while (cursor.moveToNext());
+	                lastapiid = newapi.getAPIID();
+	            }while (cursor.moveToNext());
 	        }
 		
+	        //select recently selected API
+	        cursor = db.rawQuery("SELECT value FROM " + DBHandler.TABLE_PREF + " WHERE name = 'currentApi' LIMIT 1;", null);
+	        if(cursor.moveToFirst() && !cursor.getString(0).isEmpty()){
+        		selectApi(cursor.getString(0));
+	        }else{
+	        	selectApi(lastapiid);
+	        }
 	        
-			//TODO: (optional) if there's no current API, use first one
-	       
+	        
+	        db.close();
+	        
 			return true;
 			
 		}else{
