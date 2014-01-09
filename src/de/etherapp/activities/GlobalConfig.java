@@ -31,7 +31,7 @@ public class GlobalConfig {
 	
 	public static long updateApi(PadAPI api){
 		//do not update 
-		if(currentApi.getAPIID() == api.getAPIID()){
+		if(currentApi.getAPIID().equals(apiid)){
 			return -1;
 		}
 		
