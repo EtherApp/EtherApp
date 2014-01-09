@@ -8,7 +8,7 @@ public class DBHandler extends SQLiteOpenHelper {
  
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
  
     //database Name
     private static final String DATABASE_NAME = "etherapp";

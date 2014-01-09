@@ -75,14 +75,10 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
         else {
             holder = (ViewHolder) convertView.getTag();
         }
- 
+         
         //item to fill with values
         PadlistItem padlistItem = (PadlistItem) getItem(position);
         
-        System.out.println(position + " " + padlistItem.getPadId());
-        
-   
-               
         //set values to list item
         holder.txtPadId.setText(padlistItem.getPadName());  
 
@@ -148,9 +144,6 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
 		});
        	
        	
-       	
-       	
-       	
         return convertView;
 
     }
@@ -173,6 +166,7 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		System.out.println("Click on adapter");
 		
 	}
 	

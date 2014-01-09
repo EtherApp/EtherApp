@@ -25,5 +25,6 @@
     <string name="label_myapis">My EtherPad APIs</string>
     <string name="tab_pads">Pads</string>
     <string name="tab_test">Test tab</string>
+    <string name="title_activity_pad_content">PadContentActivity</string>
 
 </resources>

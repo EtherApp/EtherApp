@@ -6,8 +6,12 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
 import de.etherapp.adapters.PadlistBaseAdapter;
@@ -44,9 +48,28 @@ public class PadlistActivity extends Activity {
         PadlistBaseAdapter adapter = new PadlistBaseAdapter(this, padlistItems);
         
         //apply adapter to the ListView
-        lv.setAdapter(adapter);        
+        lv.setAdapter(adapter);
+        
+        //item click listener for ListView
+        lv.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+				PadlistItem listitem = (PadlistItem) lv.getAdapter().getItem(pos);
+				
+				System.out.println(getPackageName());
+				
+				
+				Intent intent = new Intent();
+				intent.setClassName(getPackageName(),getPackageName()+".PadContentActivity");
+				intent.putExtra("padid", (String)listitem.getPadId());
+				startActivity(intent);
+			}
+		});
+        
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);

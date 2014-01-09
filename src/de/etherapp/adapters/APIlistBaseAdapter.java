@@ -83,6 +83,5 @@ public class APIlistBaseAdapter extends BaseAdapter implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 
-	
 	}
 }
