@@ -2,15 +2,12 @@ package de.etherapp.tasks;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.List;
 
 import org.etherpad_lite_client.EPLiteClient;
 import org.etherpad_lite_client.EPLiteException;
 
 import de.etherapp.activities.GlobalConfig;
-import de.etherapp.activities.R;
 import de.etherapp.beans.PadlistItem;
-import de.etherapp.epclient.Pad;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
@@ -25,14 +22,14 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 	}
 
 	@Override
-	//background task: retrieve data from API
+	//background task: retrieve pad data from API
 	protected String doInBackground(String... method) {
 		//get client from current API
 		EPLiteClient client = GlobalConfig.currentApi.getClient();
 		
 		//depending on the "method" string given, run a method
 		//write return value to Pad object
-		//give return value to onPostExecute unction in order to apply it to the textview
+		//give return value to onPostExecute function in order to apply it to the textview
 		
 		if(method[0].equals("usersCount")){
 			long usersCount = 0;
@@ -91,7 +88,7 @@ public class PadDataTask  extends AsyncTask<String, Void, String> {
 				if (result != null) {
 					tv.setText(result);
 				} else {
-					//TODO: set placeholder
+					tv.setText("-");
 				}
 			}
 
