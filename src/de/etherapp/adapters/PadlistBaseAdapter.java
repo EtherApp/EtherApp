@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import de.etherapp.activities.GlobalConfig;
 import de.etherapp.activities.R;
 import de.etherapp.beans.APIlistItem;
@@ -114,17 +115,33 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
         				
         				//delete pad online
         				try{
+        					final String padname = item.getPadName();
         					GlobalConfig.currentApi.getClient().deletePad(item.getPadId());
+        					//delete from local list
+            				//padlistItems.remove(clickedPos); //not needed because whole activity is being reloaded in next step
+            				
+        					GlobalConfig.ma.runOnUiThread(new Runnable(){
+        						public void run(){
+        							Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Pad \"" + padname + "\"deleted", Toast.LENGTH_LONG).show();
+        						}
+        					});
+        					
+        					//restart MainActivity
+            				//TODO: Only reload list or inner activity
+            				GlobalConfig.ma.recreate();
+            				
+            				
         				}catch(EPLiteException e){
         					System.out.println(e);
+        					
+        					GlobalConfig.ma.runOnUiThread(new Runnable(){
+        						  public void run(){
+        							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Error! Could not delete pad.", Toast.LENGTH_LONG).show();
+        						  }
+        					});
         				}
+
         				
-        				//delete from local list
-        				//padlistItems.remove(clickedPos); //not needed because whole activity is being reloaded in next step
-        				
-        				//restart MainActivity
-        				//TODO: Only reload list or inner activity
-        				GlobalConfig.ma.recreate();
         			}
         		});
         			
