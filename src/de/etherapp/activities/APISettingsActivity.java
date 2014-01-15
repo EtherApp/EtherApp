@@ -117,7 +117,7 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 				//select the updated API for use
 				GlobalConfig.selectApi(pa.getAPIID());
 				
-		        this.finish();
+				this.finish();
 			}
 		}
 		else if(v == btndelete){
@@ -128,7 +128,11 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		}
 		else if(v == btnselect){
 			GlobalConfig.selectApi(selected);
-			this.finish();
+			
+			//refresh and go back to main activity
+			Intent intent = new Intent();
+			intent.setClassName(getPackageName(),getPackageName()+".MainActivity");
+			startActivity(intent);
 		}
 
 	}
