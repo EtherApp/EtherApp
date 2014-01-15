@@ -1,11 +1,15 @@
 package de.etherapp.activities;
 
 import java.util.HashMap;
+
+import org.etherpad_lite_client.EPLiteException;
+
 import android.content.ContentValues;
 import de.etherapp.epclient.PadAPI;
 import de.etherapp.sql.DBHandler;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 public class GlobalConfig {
 	public static MainActivity ma;
@@ -35,6 +39,8 @@ public class GlobalConfig {
 		//TODO: update all data, since API has changed!
 	}
 
+	
+	
 	
 	public static long updateApi(PadAPI api){
 		//do not update 
@@ -157,6 +163,6 @@ public class GlobalConfig {
 			return false; //no API exists
 			
 		}
-	}		
+	}
 }
 

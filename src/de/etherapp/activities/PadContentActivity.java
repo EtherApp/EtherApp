@@ -30,15 +30,15 @@ public class PadContentActivity extends Activity {
 		padcontent = (TextView) findViewById(R.id.txtPadContent);
 		
 		
-		HashMap result = null;
-		try{
-			result = GlobalConfig.currentApi.getClient().getText(padid);
-		}
-		catch(EPLiteException e){
-			System.out.println(e);
-		}
-		System.out.println(result);
-		
+//		HashMap result = null;
+//		try{
+//			result = GlobalConfig.currentApi.getClient().getText(padid);
+//		}
+//		catch(EPLiteException e){
+//			System.out.println(e);
+//		}
+//		System.out.println(result);
+//		
 		//String text = (String) result.get("text");
 		padcontent.setText(padid);
 		

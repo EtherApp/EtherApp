@@ -103,6 +103,7 @@ public final class R {
         public static final int label_name=0x7f050010;
         public static final int label_port=0x7f050012;
         public static final int label_url=0x7f050011;
+        public static final int msgNetAPIErr=0x7f050019;
         public static final int tab_pads=0x7f050016;
         public static final int tab_test=0x7f050017;
         public static final int title_activity_pad_content=0x7f050018;

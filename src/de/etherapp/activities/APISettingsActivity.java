@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class APISettingsActivity extends Activity implements OnClickListener{
 	
@@ -92,13 +93,30 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 				
 				//build PadAPI object from data
 				PadAPI pa = new PadAPI(apiname, apiurl, port, apikey);
-		        GlobalConfig.putNewApi(pa);
 		        
-		        //TODO: Check whether API works
-		        		        
-		        GlobalConfig.selectApi(pa.getAPIID());
-		        System.out.println("saved " + GlobalConfig.currentApi.getAPINAME() + " on ID: " + GlobalConfig.currentApi.getAPIID());
-		        this.finish();
+		        //check whether API works		        
+		        if(!pa.checkApi()){
+		        	runOnUiThread(new Runnable(){
+						  public void run()
+						  {
+							  Toast.makeText(getApplicationContext(), getString(R.string.msgNetAPIErr), Toast.LENGTH_SHORT).show();
+						  }
+					});
+		        }else{
+		        	//register globally
+		        	GlobalConfig.putNewApi(pa);
+		        	
+		        	//select this API
+		        	GlobalConfig.selectApi(pa.getAPIID());
+		        	
+		        	//DEBUG
+		        	System.out.println("selected " + GlobalConfig.currentApi.getAPINAME() + " on ID: " + GlobalConfig.currentApi.getAPIID());
+		        	
+			        //refresh and go back to main activity
+					Intent intent = new Intent();
+					intent.setClassName(getPackageName(),getPackageName()+".MainActivity");
+					startActivity(intent);
+		        }
 			}
 			else{ //edit existing API
 				String apiname = tapiname.getText().toString();
@@ -111,13 +129,27 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 				//make PadAPI object with new values and existing ID
 				PadAPI pa = new PadAPI(apiname, apiurl, port, apikey, selected);
 				
-				//update in list and DB
-				GlobalConfig.updateApi(pa);
 				
-				//select the updated API for use
-				GlobalConfig.selectApi(pa.getAPIID());
-				
-				this.finish();
+				//check whether API works		        
+		        if(!pa.checkApi()){
+		        	runOnUiThread(new Runnable(){
+						  public void run(){
+							  Toast.makeText(getApplicationContext(), getString(R.string.msgNetAPIErr), Toast.LENGTH_SHORT).show();
+						  }
+					});
+		        }else{
+		        	//update in list and DB
+					GlobalConfig.updateApi(pa);
+		        	
+					//select the updated API for use
+					GlobalConfig.selectApi(pa.getAPIID());
+		        	
+		        	
+			        //refresh and go back to main activity
+					Intent intent = new Intent();
+					intent.setClassName(getPackageName(),getPackageName()+".MainActivity");
+					startActivity(intent);
+		        }
 			}
 		}
 		else if(v == btndelete){
@@ -127,14 +159,23 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 			this.finish();
 		}
 		else if(v == btnselect){
-			GlobalConfig.selectApi(selected);
-			
-			//refresh and go back to main activity
-			Intent intent = new Intent();
-			intent.setClassName(getPackageName(),getPackageName()+".MainActivity");
-			startActivity(intent);
+			//check whether API works		        
+	        PadAPI pa = GlobalConfig.apiMap.get(selected);
+			if(!pa.checkApi()){
+	        	runOnUiThread(new Runnable(){
+					  public void run(){
+						  Toast.makeText(getApplicationContext(), getString(R.string.msgNetAPIErr), Toast.LENGTH_SHORT).show();
+					  }
+				});
+	        }else{
+	        	//actually select it
+	        	GlobalConfig.selectApi(selected);
+	        	
+	        	//refresh and go back to main activity
+				Intent intent = new Intent();
+				intent.setClassName(getPackageName(),getPackageName()+".MainActivity");
+				startActivity(intent);
+	        }
 		}
-
 	}
-
 }

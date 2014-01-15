@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import org.etherpad_lite_client.EPLiteClient;
+import org.etherpad_lite_client.EPLiteException;
 
 import android.accounts.NetworkErrorException;
 
@@ -61,6 +62,18 @@ public class PadAPI {
 		else{
 			error = true;
 		}
+	}
+	
+	public boolean checkApi(){
+		try{
+			this.getClient().createPad(this.getAPIID());
+			this.getClient().deletePad(this.getAPIID());
+		}
+		catch(EPLiteException e){
+			return false;
+		}
+		
+		return true;
 	}
 	
 	//getters & setters

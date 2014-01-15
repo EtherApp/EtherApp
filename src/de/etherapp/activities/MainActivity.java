@@ -1,7 +1,9 @@
 package de.etherapp.activities;
 
 import de.etherapp.activities.R;
+import de.etherapp.beans.APIlistItem;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.accounts.NetworkErrorException;
 import android.app.TabActivity;
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
 
 public class MainActivity extends TabActivity {
@@ -22,6 +25,11 @@ public class MainActivity extends TabActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		//allow network on main thread... *laughing*
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+		
+		
 		//TabHost that will contain the Tabs
 		tabHost = (TabHost)findViewById(android.R.id.tabhost);
 		
@@ -65,34 +73,58 @@ public class MainActivity extends TabActivity {
 	@Override
 	protected void onRestart() {
 		super.onRestart();
+		System.out.println("restart");
+		
 		startup();
 	}
 	
+
 	private void startup(){
+		boolean flag = false;
+		
 		if(!GlobalConfig.currentApi.isReady()){
 			try {
 				GlobalConfig.currentApi.init();
 			}
 			catch (NetworkErrorException e) {
-				this.finish();
+				
+				runOnUiThread(new Runnable(){
+					  public void run(){
+						  Toast.makeText(getApplicationContext(), "Could not load recently selected Etherpad. Please select another API.", Toast.LENGTH_LONG).show();
+					  }
+				});
+				
+				flag = true;
+				
+				//show settings activity (e.g. so that user can select another API)
+				Intent intent = new Intent();
+				intent.setClassName(getPackageName(),getPackageName()+".SettingsListActivity");
+				startActivity(intent);
 			}
-			while(!GlobalConfig.currentApi.isReady()){}
+			
+			//only do this if no error occured before
+			if(!flag){
+				//wait until API is finished with laoding pad list
+				while(!GlobalConfig.currentApi.isReady()){}
+			}
 		}
 		
-		
-		//TAB INITIALIZATION
-		
-		tabHost.getTabWidget().removeAllViews();
+		//only do this if no error occured before
+		if(!flag){
+			
+			//TAB INITIALIZATION
+			tabHost.getTabWidget().removeAllViews();
 
-		//get tab, set tab name and activity to be loaded, add tab to tabhost
-		tab1 = tabHost.newTabSpec("padlist");
-		tab1.setIndicator(getString(R.string.tab_pads));
-		tab1.setContent(new Intent(this,PadlistActivity.class));
-		tabHost.addTab(tab1);
+			//get tab, set tab name and activity to be loaded, add tab to tabhost
+			tab1 = tabHost.newTabSpec("padlist");
+			tab1.setIndicator(getString(R.string.tab_pads));
+			tab1.setContent(new Intent(this,PadlistActivity.class));
+			tabHost.addTab(tab1);
 
-		tab2 = tabHost.newTabSpec("testtab");
-		tab2.setIndicator(getString(R.string.tab_test));
-		tab2.setContent(new Intent(this,TestTabActivity.class));
-		tabHost.addTab(tab2);
+			tab2 = tabHost.newTabSpec("testtab");
+			tab2.setIndicator(getString(R.string.tab_test));
+			tab2.setContent(new Intent(this,TestTabActivity.class));
+			tabHost.addTab(tab2);
+		}
 	}
 }
