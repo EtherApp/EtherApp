@@ -30,11 +30,11 @@
 
         <EditText
             android:id="@+id/txtapiname"
-            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="test" />
+            android:hint="name it"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -51,10 +51,10 @@
 
         <EditText
             android:id="@+id/txtpadurl"
-            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="http://fastreboot.de" />
+            android:hint="http://example.org"
+            android:inputType="text" />
 
     </LinearLayout>
     
@@ -91,10 +91,10 @@
 
         <EditText
             android:id="@+id/txtapikey"
-            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="8EkKqoT0CR28PcRDpF311XLtspAchXuM" />
+            android:hint="54321YEKIPA54321"
+            android:inputType="text" />
 
     </LinearLayout>
 
