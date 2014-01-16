@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,17 +44,14 @@ public class PadContentActivity extends Activity {
 			padcontent.setText(text);
 		}
 		catch(EPLiteException e){
-			System.out.println("fkenfkenf");
+			//On Error show information
 			runOnUiThread(new Runnable(){
 				  public void run(){
 					  Toast.makeText(getApplicationContext(), "Could not retrieve Text from pad.", Toast.LENGTH_LONG).show();
 				  }
 			});
-			System.out.println(e);
 			finish();
-		}
-
-		
+		}	
 	}
 
 	@Override
@@ -62,5 +60,4 @@ public class PadContentActivity extends Activity {
 		getMenuInflater().inflate(R.menu.pad_content, menu);
 		return true;
 	}
-
 }

@@ -122,8 +122,8 @@ public class MainActivity extends TabActivity {
 			tabHost.addTab(tab1);
 
 			tab2 = tabHost.newTabSpec("testtab");
-			tab2.setIndicator(getString(R.string.tab_test));
-			tab2.setContent(new Intent(this,TestTabActivity.class));
+			tab2.setIndicator(getString(R.string.tab_group));
+			tab2.setContent(new Intent(this,GrouplistActivity.class));
 			tabHost.addTab(tab2);
 		}
 	}

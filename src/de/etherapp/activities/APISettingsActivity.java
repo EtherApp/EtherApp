@@ -96,6 +96,7 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		        
 		        //check whether API works		        
 		        if(!pa.checkApi()){
+					//On Error show information
 		        	runOnUiThread(new Runnable(){
 						  public void run()
 						  {
@@ -123,15 +124,13 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 				String apiurl  = tpadurl.getText().toString();
 				int port       = Integer.parseInt(tport.getText().toString());
 				String apikey  = tapikey.getText().toString();
-
-				System.out.println(apiname + "  " + apiurl + "  " + port + "   " + apikey);
 				
 				//make PadAPI object with new values and existing ID
 				PadAPI pa = new PadAPI(apiname, apiurl, port, apikey, selected);
 				
-				
 				//check whether API works		        
 		        if(!pa.checkApi()){
+					//On Error show information
 		        	runOnUiThread(new Runnable(){
 						  public void run(){
 							  Toast.makeText(getApplicationContext(), getString(R.string.msgNetAPIErr), Toast.LENGTH_SHORT).show();
@@ -162,6 +161,7 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 			//check whether API works		        
 	        PadAPI pa = GlobalConfig.apiMap.get(selected);
 			if(!pa.checkApi()){
+				//On Error show information
 	        	runOnUiThread(new Runnable(){
 					  public void run(){
 						  Toast.makeText(getApplicationContext(), getString(R.string.msgNetAPIErr), Toast.LENGTH_SHORT).show();

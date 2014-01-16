@@ -65,6 +65,7 @@ public class PadAPI {
 	}
 	
 	public boolean checkApi(){
+		// try to create and delete a pad to the reachability of the EtherPad
 		try{
 			this.getClient().createPad(this.getAPIID());
 			this.getClient().deletePad(this.getAPIID());
@@ -77,7 +78,6 @@ public class PadAPI {
 	}
 	
 	//getters & setters
-	
 	public HashMap<String, Pad> getPadList() {
 		return padhash;
 	}

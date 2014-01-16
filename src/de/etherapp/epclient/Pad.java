@@ -15,9 +15,11 @@ public class Pad {
 	public Pad(String padId){
 		this.padId = padId;
 		
+		// RegEx to extract padname from combined string padgroup$padname
 		Pattern p = Pattern.compile("^(g\\..*\\$)(.*$)");
 		Matcher m = p.matcher(padId);
 		
+		// find matches
 		if(m.find()){
 			padGroup = m.group(1);
 			padName = m.group(2);

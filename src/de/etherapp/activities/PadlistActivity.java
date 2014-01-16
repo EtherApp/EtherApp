@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -59,8 +60,11 @@ public class PadlistActivity extends Activity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+				
+				//get PadlistItem
 				PadlistItem listitem = (PadlistItem) lv.getAdapter().getItem(pos);
 				
+				//start activity
 				Intent intent = new Intent();
 				intent.setClassName(getPackageName(),getPackageName()+".PadContentActivity");
 				System.out.println((String)listitem.getPadId());
@@ -76,8 +80,7 @@ public class PadlistActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
-	
+	}	
 }
 
 

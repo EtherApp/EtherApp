@@ -29,8 +29,8 @@
             android:label="@string/title_activity_padlist" >
         </activity>
         <activity
-            android:name="de.etherapp.activities.TestTabActivity"
-            android:label="@string/title_activity_test_tab" >
+            android:name="de.etherapp.activities.GrouplistActivity"
+            android:label="@string/title_activity_grouplist" >
         </activity>
         <activity
             android:name="de.etherapp.activities.APISettingsActivity"

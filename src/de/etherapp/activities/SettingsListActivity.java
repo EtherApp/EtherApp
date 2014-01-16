@@ -29,31 +29,6 @@ public class SettingsListActivity<T> extends Activity {
 		
 		startup();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.settings_list, menu);
-		return true;
-	}
-
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	            case R.id.action_add:
-	            	Intent intent = new Intent(this,APISettingsActivity.class);
-	    			intent.putExtra("selected", "");
-	    			startActivity(intent);
-	                return true;
-	            case R.id.action_quit:
-	            	this.finish();
-	            	return true;
-	            default:
-	                return super.onOptionsItemSelected(item);
-	    }
-	}
 	
 	@Override
 	protected void onRestart() {
@@ -100,5 +75,26 @@ public class SettingsListActivity<T> extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.settings_list, menu);
+		return true;
+	}
 
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	            case R.id.action_add:
+	            	Intent intent = new Intent(this,APISettingsActivity.class);
+	    			intent.putExtra("selected", "");
+	    			startActivity(intent);
+	                return true;
+	            default:
+	                return super.onOptionsItemSelected(item);
+	    }
+	}
 }
