@@ -12,12 +12,12 @@ The goal is to create an admin app for Etherpad Lite.
 * list of pads
 * delete pads
 * create pads
+* list of groups
+* create groups
 * further information about pads
 * profile management for multiple EPL installations
 
 ## Planned features
-* list of groups
-* create groups
 * adding pads to groups
 
 ## Screenshot
