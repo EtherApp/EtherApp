@@ -8,7 +8,7 @@ import java.util.TimeZone;
 
 import de.etherapp.epclient.Pad;
 
-public class PadlistItem {
+public class PadlistItem implements Comparable<PadlistItem> {
 	public Pad pad;
  
 	public PadlistItem(Pad pad) {
@@ -90,5 +90,11 @@ public class PadlistItem {
 		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.GERMANY); 
 		format.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 		return format.format(d);
+	}
+
+	//method for alphabetical order of items in list
+	@Override
+	public int compareTo(PadlistItem pli) {
+		return this.getPadName().compareTo(pli.getPadName());
 	}
 }

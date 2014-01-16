@@ -1,6 +1,7 @@
 package de.etherapp.activities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -44,6 +45,8 @@ public class PadlistActivity extends Activity {
         	padlistItems.add(item);
         }
 
+        Collections.sort(padlistItems);
+        
         //set values to the adapter
         PadlistBaseAdapter adapter = new PadlistBaseAdapter(this, padlistItems);
         
