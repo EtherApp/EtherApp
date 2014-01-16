@@ -1,5 +1,6 @@
 package de.etherapp.epclient;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ public class PadAPI {
 	private boolean error = false;
 	
 	private HashMap<String, Pad> padhash = null;
+	private ArrayList<String> grouplist = new ArrayList<String>();
 	
 	//constructor with new (random) API id
 	public PadAPI(String apiname, String padurl, int port, String apikey){
@@ -54,10 +56,11 @@ public class PadAPI {
 	}
 	
 	//sets a padlist to work with
-	public void setPadList(HashMap<String,Pad> pad){
-		if(pad != null){
+	public void setLists(HashMap<String,Pad> pads, ArrayList<String> groups){
+		if(pads != null && groups != null){
 			ready = true;
-			padhash = pad;
+			padhash = pads;
+			grouplist = groups;
 		}
 		else{
 			error = true;
@@ -80,6 +83,10 @@ public class PadAPI {
 	//getters & setters
 	public HashMap<String, Pad> getPadList() {
 		return padhash;
+	}
+	
+	public ArrayList<String> getGroupList() {
+		return grouplist;
 	}
 	
 	public EPLiteClient getClient() {

@@ -1,37 +1,23 @@
 package de.etherapp.adapters;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.etherpad_lite_client.EPLiteException;
-
 import android.app.Activity;
-import android.app.ActionBar.OnNavigationListener;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import de.etherapp.activities.GlobalConfig;
 import de.etherapp.activities.R;
-import de.etherapp.beans.APIlistItem;
 import de.etherapp.beans.PadlistItem;
-import de.etherapp.epclient.Pad;
 import de.etherapp.tasks.PadDataTask;
 
 /*
@@ -64,7 +50,7 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
             convertView = mInflater.inflate(R.layout.padlist_item, null);
             holder = new ViewHolder();
             
-            holder.txtPadId      = (TextView) convertView.findViewById(R.id.txtPadId);
+            holder.txtPadId      = (TextView) convertView.findViewById(R.id.txtGroup);
             holder.txtUsersCount = (TextView) convertView.findViewById(R.id.txtUsersCount);
             holder.txtRevCount	 = (TextView) convertView.findViewById(R.id.txtRevCount);
             holder.txtLastEdited = (TextView) convertView.findViewById(R.id.txtLastEdited);
