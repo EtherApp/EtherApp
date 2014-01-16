@@ -1,15 +1,23 @@
 package de.etherapp.activities;
 
+import java.util.HashMap;
+
+import org.etherpad_lite_client.EPLiteException;
+
 import de.etherapp.activities.R;
 import de.etherapp.beans.APIlistItem;
+import de.etherapp.beans.PadlistItem;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.accounts.NetworkErrorException;
+import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
@@ -64,11 +72,129 @@ public class MainActivity extends TabActivity {
 	            case R.id.action_quit:
 	            	this.finish();
 	            	return true;
+	            case R.id.action_refreshlist:
+	            	this.recreate();
+	            	return true;
+	            case R.id.action_addpad:
+	            	int tabindex = this.tabHost.getCurrentTab();
+	            	if(tabindex == 0){
+	            		addNewPad();
+	            	}else if (tabindex == 1){
+	            		addNewGroup();
+	            	}
+	            	return true;
 	            default:
 	                return super.onOptionsItemSelected(item);
 	    }
 	}
 	
+	
+	public void addNewPad(){
+		//create pad online
+		
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		
+		//set dialog title
+		alertDialogBuilder.setTitle("Create new pad");
+ 
+		//set dialog message
+		alertDialogBuilder.setMessage("Please enter a name.");
+		alertDialogBuilder.setCancelable(false);
+		
+		//set input field
+		final EditText input = new EditText(this);
+		alertDialogBuilder.setView(input);
+		
+		alertDialogBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				final String padname = input.getText().toString();
+				try{
+					GlobalConfig.currentApi.getClient().createPad(padname,"Proudly presents by EtherApp!!");
+					
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Pad \"" + padname + "\" created", Toast.LENGTH_LONG).show();
+						}
+					});
+					
+					//restart MainActivity
+					//TODO: Only reload list or inner activity
+					GlobalConfig.ma.recreate();			
+				} catch(EPLiteException e) {			
+					runOnUiThread(new Runnable() {
+						  public void run() {
+							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Error! Could not create pad.", Toast.LENGTH_LONG).show();
+						  }
+					});
+				}
+			}
+		});
+		
+		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				//if this button is clicked, just close the dialog box and do nothing
+				dialog.cancel();
+			}
+		});
+ 
+		//create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+ 
+		//show it
+		alertDialog.show();
+	}
+	
+	
+	public void addNewGroup(){
+		//create group online
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		
+		//set dialog title
+		alertDialogBuilder.setTitle("Create new group");
+ 
+		//set dialog message
+		alertDialogBuilder.setMessage("Do you really want to create a new group?");
+		alertDialogBuilder.setCancelable(false);
+		
+		alertDialogBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				try{
+					//uncomment this if grouplist is ready
+					//HashMap grouphash = GlobalConfig.currentApi.getClient().createGroup();
+					//final String groupname = (String) grouphash.get("groupID");
+					final String groupname = new String("TEST");
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Group \"" + groupname + "\" created", Toast.LENGTH_LONG).show();
+						}
+					});
+					
+					//restart MainActivity
+					//TODO: Only reload list or inner activity
+					GlobalConfig.ma.recreate();			
+				} catch(EPLiteException e) {			
+					runOnUiThread(new Runnable() {
+						  public void run() {
+							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Error! Could not create group.", Toast.LENGTH_LONG).show();
+						  }
+					});
+				}
+			}
+		});
+		
+		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				//if this button is clicked, just close the dialog box and do nothing
+				dialog.cancel();
+			}
+		});
+ 
+		//create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+ 
+		//show it
+		alertDialog.show();
+	}
 
 	@Override
 	protected void onRestart() {
