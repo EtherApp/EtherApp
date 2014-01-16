@@ -23,5 +23,7 @@ The goal is to create an admin app for Etherpad Lite.
 ## Screenshot
 ![Screenshot 1](etherapp.png)
 
+You will find more screenshots on our website [http://etherapp.de](http://etherapp.de)
+
 This app uses the Etherpad Lite HTTP API.
 If you have any suggestions or ideas, please let us know!
