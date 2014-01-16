@@ -7,8 +7,8 @@ import org.etherpad_lite_client.EPLiteException;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class PadContentActivity extends Activity {
@@ -29,18 +29,21 @@ public class PadContentActivity extends Activity {
 		//content text field
 		padcontent = (TextView) findViewById(R.id.txtPadContent);
 		
+		//make textview scrollable
+		padcontent.setMovementMethod(new ScrollingMovementMethod());
 		
-//		HashMap result = null;
-//		try{
-//			result = GlobalConfig.currentApi.getClient().getText(padid);
-//		}
-//		catch(EPLiteException e){
-//			System.out.println(e);
-//		}
-//		System.out.println(result);
-//		
-		//String text = (String) result.get("text");
-		padcontent.setText(padid);
+		//get text from API
+		HashMap result = null;
+		try{
+			result = GlobalConfig.currentApi.getClient().getText(padid);
+		}
+		catch(EPLiteException e){
+			System.out.println(e);
+		}
+		String text = (String) result.get("text");
+
+		//apply to textview
+		padcontent.setText(text);
 		
 	}
 
