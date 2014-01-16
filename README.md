@@ -8,12 +8,17 @@ The goal is to create an admin app for Etherpad Lite.
 
 *This project is under heavy development!*
 
-# Planned features
+# Features so far
 * list of pads
-* deletion of pads
-* information about pads
-* list of groups
+* delete pads
+* create pads
+* further information about pads
 * profile management for multiple EPL installations
+
+# Planned features
+* list of groups
+* create groups
+* adding pads to groups
 
 This app uses the Etherpad Lite HTTP API.
 If you have any suggestions or ideas, please let us know!
