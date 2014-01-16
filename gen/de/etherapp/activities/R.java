@@ -29,15 +29,19 @@ public final class R {
         public static final int iconmonstr_lock_11_icon_32=0x7f020005;
         public static final int iconmonstr_lock_3_icon_32=0x7f020006;
         public static final int iconmonstr_multi_files4_icon_32=0x7f020007;
-        public static final int iconmonstr_time_3_icon_32=0x7f020008;
-        public static final int iconmonstr_user_14_icon_32=0x7f020009;
-        public static final int iconmonstr_x_mark_icon_32=0x7f02000a;
-        public static final int reload=0x7f02000b;
+        public static final int iconmonstr_note_25_icon_24=0x7f020008;
+        public static final int iconmonstr_refresh_3_icon_24=0x7f020009;
+        public static final int iconmonstr_time_3_icon_32=0x7f02000a;
+        public static final int iconmonstr_user_14_icon_32=0x7f02000b;
+        public static final int iconmonstr_x_mark_icon_32=0x7f02000c;
+        public static final int reload=0x7f02000d;
     }
     public static final class id {
         public static final int LinearLayoutTab=0x7f080001;
-        public static final int action_add=0x7f08001d;
+        public static final int action_add=0x7f08001f;
+        public static final int action_addpad=0x7f08001d;
         public static final int action_quit=0x7f08001c;
+        public static final int action_refreshlist=0x7f08001e;
         public static final int action_settings=0x7f08001b;
         public static final int apilist=0x7f08000f;
         public static final int btnDeletePad=0x7f08001a;
@@ -85,6 +89,8 @@ public final class R {
         public static final int tabbed=0x7f070005;
     }
     public static final class string {
+        public static final int action_addpad=0x7f05001a;
+        public static final int action_refreshlist=0x7f05001b;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int btnDeletePad=0x7f050006;

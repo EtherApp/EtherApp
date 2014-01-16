@@ -27,5 +27,7 @@
     <string name="tab_group">Groups</string>
     <string name="title_activity_pad_content">Show pad text</string>
     <string name="msgNetAPIErr">Network error or API not valid!</string>
-
+    <string name="action_addpad">Add pad</string>
+    <string name="action_refreshlist">Refresh list</string>
+    
 </resources>
