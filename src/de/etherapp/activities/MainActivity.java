@@ -160,9 +160,10 @@ public class MainActivity extends TabActivity {
 			public void onClick(DialogInterface dialog, int id) {
 				try{
 					//uncomment this if grouplist is ready
-					//HashMap grouphash = GlobalConfig.currentApi.getClient().createGroup();
-					//final String groupname = (String) grouphash.get("groupID");
-					final String groupname = new String("TEST");
+					HashMap grouphash = GlobalConfig.currentApi.getClient().createGroup();
+					final String groupname = (String) grouphash.get("groupID");
+					//final String groupname = new String("TEST");
+					System.out.println(groupname);
 					runOnUiThread(new Runnable() {
 						public void run() {
 							Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Group \"" + groupname + "\" created", Toast.LENGTH_LONG).show();

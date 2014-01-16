@@ -1,5 +1,6 @@
 package de.etherapp.epclient;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,21 +20,24 @@ public class PadThread extends Thread{
 	}
 	
 	public void run(){			
-		HashMap<String, Pad> pad = new HashMap<String, Pad>();
+		HashMap<String, Pad> pads = new HashMap<String, Pad>();
 			
 		//Get list of all pad ids
 		try{
 			HashMap result = client.listAllPads();
 			List padIds = (List) result.get("padIDs");
 			
+			result = client.listAllGroups();
+			ArrayList<String> groups = (ArrayList<String>) result.get("groupIDs");
+			
 			for (Object padid : padIds) {
-				pad.put((String)padid, new Pad((String)padid));
+				pads.put((String)padid, new Pad((String)padid));
 			}
-			pa.setPadList(pad);
+			pa.setLists(pads,groups);
 		}
 		catch(EPLiteException e){
 			System.out.println(e);
-			pa.setPadList(null);
+			pa.setLists(null,null);
 		}
 
 	}

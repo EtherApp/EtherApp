@@ -38,37 +38,39 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayoutTab=0x7f080001;
-        public static final int action_add=0x7f08001f;
-        public static final int action_addpad=0x7f08001d;
-        public static final int action_quit=0x7f08001c;
-        public static final int action_refreshlist=0x7f08001e;
-        public static final int action_settings=0x7f08001b;
-        public static final int apilist=0x7f08000f;
-        public static final int btnDeletePad=0x7f08001a;
-        public static final int btndeleteapi=0x7f08000d;
-        public static final int btnsaveapi=0x7f08000c;
-        public static final int btnselectapi=0x7f08000e;
-        public static final int imgApiSelected=0x7f080012;
-        public static final int imgLastEdited=0x7f080018;
-        public static final int imgRevCount=0x7f080016;
-        public static final int imgUsersCount=0x7f080014;
-        public static final int item=0x7f080010;
+        public static final int action_add=0x7f080021;
+        public static final int action_addpad=0x7f08001f;
+        public static final int action_quit=0x7f08001e;
+        public static final int action_refreshlist=0x7f080020;
+        public static final int action_settings=0x7f08001d;
+        public static final int apilist=0x7f080010;
+        public static final int btnDeleteGroup=0x7f080015;
+        public static final int btnDeletePad=0x7f08001c;
+        public static final int btndeleteapi=0x7f08000e;
+        public static final int btnsaveapi=0x7f08000d;
+        public static final int btnselectapi=0x7f08000f;
+        public static final int grouplist=0x7f080000;
+        public static final int imgApiSelected=0x7f080013;
+        public static final int imgLastEdited=0x7f08001a;
+        public static final int imgRevCount=0x7f080018;
+        public static final int imgUsersCount=0x7f080016;
+        public static final int item=0x7f080011;
         public static final int padlist=0x7f080003;
-        public static final int textView1=0x7f080000;
-        public static final int textView2=0x7f080006;
-        public static final int textView3=0x7f08000a;
-        public static final int textView4=0x7f080004;
-        public static final int textView5=0x7f080008;
-        public static final int txtApiId=0x7f080011;
-        public static final int txtLastEdited=0x7f080019;
+        public static final int textView1=0x7f080004;
+        public static final int textView2=0x7f080007;
+        public static final int textView3=0x7f08000b;
+        public static final int textView4=0x7f080005;
+        public static final int textView5=0x7f080009;
+        public static final int txtApiId=0x7f080012;
+        public static final int txtGroup=0x7f080014;
+        public static final int txtLastEdited=0x7f08001b;
         public static final int txtPadContent=0x7f080002;
-        public static final int txtPadId=0x7f080013;
-        public static final int txtRevCount=0x7f080017;
-        public static final int txtUsersCount=0x7f080015;
-        public static final int txtapikey=0x7f08000b;
-        public static final int txtapiname=0x7f080005;
-        public static final int txtpadurl=0x7f080007;
-        public static final int txtport=0x7f080009;
+        public static final int txtRevCount=0x7f080019;
+        public static final int txtUsersCount=0x7f080017;
+        public static final int txtapikey=0x7f08000c;
+        public static final int txtapiname=0x7f080006;
+        public static final int txtpadurl=0x7f080008;
+        public static final int txtport=0x7f08000a;
     }
     public static final class layout {
         public static final int activity_grouplist=0x7f030000;
@@ -78,7 +80,8 @@ public final class R {
         public static final int activity_settings=0x7f030004;
         public static final int activity_settings_list=0x7f030005;
         public static final int apilist_item=0x7f030006;
-        public static final int padlist_item=0x7f030007;
+        public static final int grouplist_item=0x7f030007;
+        public static final int padlist_item=0x7f030008;
     }
     public static final class menu {
         public static final int group=0x7f070000;
@@ -89,36 +92,37 @@ public final class R {
         public static final int tabbed=0x7f070005;
     }
     public static final class string {
-        public static final int action_addpad=0x7f05001a;
-        public static final int action_refreshlist=0x7f05001b;
+        public static final int action_addpad=0x7f05001b;
+        public static final int action_refreshlist=0x7f05001c;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int btnDeleteGroup=0x7f050007;
         public static final int btnDeletePad=0x7f050006;
-        public static final int btndeleteapi=0x7f05000e;
-        public static final int btnsaveapi=0x7f05000f;
-        public static final int btnselectapi=0x7f05000d;
-        public static final int hello_world=0x7f05000b;
+        public static final int btndeleteapi=0x7f05000f;
+        public static final int btnsaveapi=0x7f050010;
+        public static final int btnselectapi=0x7f05000e;
+        public static final int hello_world=0x7f05000c;
         public static final int imgApiSelected=0x7f050005;
         public static final int imgLastEdited=0x7f050004;
         public static final int imgRevCount=0x7f050003;
         public static final int imgUsersCount=0x7f050002;
-        public static final int label_apiedit=0x7f050014;
-        public static final int label_apikey=0x7f050013;
-        public static final int label_myapis=0x7f050015;
-        public static final int label_name=0x7f050010;
-        public static final int label_port=0x7f050012;
-        public static final int label_url=0x7f050011;
-        public static final int msgNetAPIErr=0x7f050019;
-        public static final int tab_group=0x7f050017;
-        public static final int tab_pads=0x7f050016;
-        public static final int title_activity_grouplist=0x7f050009;
-        public static final int title_activity_pad_content=0x7f050018;
-        public static final int title_activity_padlist=0x7f050008;
-        public static final int title_activity_settings=0x7f05000a;
+        public static final int label_apiedit=0x7f050015;
+        public static final int label_apikey=0x7f050014;
+        public static final int label_myapis=0x7f050016;
+        public static final int label_name=0x7f050011;
+        public static final int label_port=0x7f050013;
+        public static final int label_url=0x7f050012;
+        public static final int msgNetAPIErr=0x7f05001a;
+        public static final int tab_group=0x7f050018;
+        public static final int tab_pads=0x7f050017;
+        public static final int title_activity_grouplist=0x7f05000a;
+        public static final int title_activity_pad_content=0x7f050019;
+        public static final int title_activity_padlist=0x7f050009;
+        public static final int title_activity_settings=0x7f05000b;
         /**  needed? 
          */
-        public static final int title_activity_settings_list=0x7f05000c;
-        public static final int title_activity_tabbed=0x7f050007;
+        public static final int title_activity_settings_list=0x7f05000d;
+        public static final int title_activity_tabbed=0x7f050008;
     }
     public static final class style {
         /** 
