@@ -95,6 +95,6 @@ public class PadlistItem implements Comparable<PadlistItem> {
 	//method for alphabetical order of items in list
 	@Override
 	public int compareTo(PadlistItem pli) {
-		return this.getPadName().compareTo(pli.getPadName());
+		return this.getPadName().toLowerCase().compareTo(pli.getPadName().toLowerCase());
 	}
 }

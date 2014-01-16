@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
-import de.etherapp.helper.SortIgnoreCase;
 import de.etherapp.adapters.PadlistBaseAdapter;
 import de.etherapp.activities.R;
 
@@ -47,7 +46,7 @@ public class PadlistActivity extends Activity {
         	padlistItems.add(item);
         }
 
-        Collections.sort(padlistItems,new SortIgnoreCase());
+        Collections.sort(padlistItems);
         
         //set values to the adapter
         PadlistBaseAdapter adapter = new PadlistBaseAdapter(this, padlistItems);
