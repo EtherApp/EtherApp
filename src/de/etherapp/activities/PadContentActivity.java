@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PadContentActivity extends Activity {
 	
@@ -36,14 +37,22 @@ public class PadContentActivity extends Activity {
 		HashMap result = null;
 		try{
 			result = GlobalConfig.currentApi.getClient().getText(padid);
+			String text = (String) result.get("text");
+
+			//apply to textview
+			padcontent.setText(text);
 		}
 		catch(EPLiteException e){
+			System.out.println("fkenfkenf");
+			runOnUiThread(new Runnable(){
+				  public void run(){
+					  Toast.makeText(getApplicationContext(), "Could not retrieve Text from pad.", Toast.LENGTH_LONG).show();
+				  }
+			});
 			System.out.println(e);
+			finish();
 		}
-		String text = (String) result.get("text");
 
-		//apply to textview
-		padcontent.setText(text);
 		
 	}
 

@@ -2,6 +2,7 @@ package de.etherapp.activities;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.Pad;
+import de.etherapp.helper.SortIgnoreCase;
 import de.etherapp.adapters.PadlistBaseAdapter;
 import de.etherapp.activities.R;
 
@@ -45,7 +47,7 @@ public class PadlistActivity extends Activity {
         	padlistItems.add(item);
         }
 
-        Collections.sort(padlistItems);
+        Collections.sort(padlistItems,new SortIgnoreCase());
         
         //set values to the adapter
         PadlistBaseAdapter adapter = new PadlistBaseAdapter(this, padlistItems);
@@ -60,11 +62,9 @@ public class PadlistActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 				PadlistItem listitem = (PadlistItem) lv.getAdapter().getItem(pos);
 				
-				System.out.println(getPackageName());
-				
-				
 				Intent intent = new Intent();
 				intent.setClassName(getPackageName(),getPackageName()+".PadContentActivity");
+				System.out.println((String)listitem.getPadId());
 				intent.putExtra("padid", (String)listitem.getPadId());
 				startActivity(intent);
 			}
@@ -79,6 +79,6 @@ public class PadlistActivity extends Activity {
 		return true;
 	}
 	
-	
-
 }
+
+
