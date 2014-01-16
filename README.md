@@ -21,7 +21,7 @@ The goal is to create an admin app for Etherpad Lite.
 * adding pads to groups
 
 ## Screenshot
-![Screenshot 1](https://github.com/EtherApp/EtherApp.github.io/blob/master/images/etherapp.png)
+![Screenshot 1](etherapp.png)
 
 This app uses the Etherpad Lite HTTP API.
 If you have any suggestions or ideas, please let us know!
