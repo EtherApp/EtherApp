@@ -1,9 +1,14 @@
 package de.etherapp.activities;
 
+import org.etherpad_lite_client.EPLiteException;
+
 import de.etherapp.activities.R;
+import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.PadAPI;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -23,6 +28,7 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 	Button btnselect = null;
 
 	String selected = null;
+	APISettingsActivity apiact = this;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -152,10 +158,52 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 			}
 		}
 		else if(v == btndelete){
-			if(GlobalConfig.getApiCount() > 0){
-				GlobalConfig.deleteApi(selected);
-			}
-			this.finish();
+			
+    		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+    		//set dialog title
+    		alertDialogBuilder.setTitle("Delete API");
+
+    		//set dialog message
+    		alertDialogBuilder.setMessage("API \"" + tapiname.getText().toString() + "\" will be deleted. Continue?");
+    		alertDialogBuilder.setCancelable(false);
+
+    		alertDialogBuilder.setPositiveButton("Delete",new DialogInterface.OnClickListener() {
+    			public void onClick(DialogInterface dialog, int id) {
+ 
+    				//delete API
+    				if(GlobalConfig.getApiCount() > 0){
+    					GlobalConfig.deleteApi(selected);
+        					
+        				runOnUiThread(new Runnable(){
+        					public void run(){
+        						Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Pad \"" + tapiname.getText().toString() + "\"deleted", Toast.LENGTH_LONG).show();
+        					}
+        				});
+        				apiact.finish();
+    				}
+    				else{
+        				runOnUiThread(new Runnable(){
+        					public void run(){
+        						Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Could not delete last API. Create a new API, at first.", Toast.LENGTH_LONG).show();
+        					}
+        				});
+    				}
+    			}
+    		});
+
+    		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+    			public void onClick(DialogInterface dialog, int id) {
+    				//if this button is clicked, just close the dialog box and do nothing
+    				dialog.cancel();
+    			}
+    		});
+
+    		//create alert dialog
+    		AlertDialog alertDialog = alertDialogBuilder.create();
+
+    		//show it
+    		alertDialog.show();  		
 		}
 		else if(v == btnselect){
 			//check whether API works		        
