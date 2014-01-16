@@ -1,7 +1,7 @@
 package de.etherapp.beans;
 
 public class GrouplistItem implements Comparable<GrouplistItem> {
-	public String group;
+	private String group;
  
 	public GrouplistItem(String group) {
 		this.group = group;

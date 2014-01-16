@@ -8,6 +8,7 @@
     <string name="imgLastEdited">Last edited</string>
     <string name="imgApiSelected">X</string>
     <string name="btnDeletePad">Delete this pad</string>
+    <string name="btnDeleteGroup">Delete Group</string>
     <string name="title_activity_tabbed">EtherApp</string>
     <string name="title_activity_padlist">Pad List</string>
     <string name="title_activity_grouplist">Group List</string>

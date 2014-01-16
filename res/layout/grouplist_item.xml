@@ -14,5 +14,17 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:text="testetsttest" />
- 
+     <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/btnDeleteGroup"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:background="@drawable/iconmonstr_x_mark_icon_32"
+            android:layout_alignParentRight="true"
+            android:focusableInTouchMode="true"
+            android:contentDescription="@string/btnDeleteGroup" />
+    </RelativeLayout>
 </LinearLayout>

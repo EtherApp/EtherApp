@@ -79,99 +79,97 @@ public class PadlistBaseAdapter extends BaseAdapter implements OnClickListener{
        	
         holder.delbtn.setOnClickListener(new OnClickListener() { //implement a "flying" click listener
 
-       		@Override
+        	@Override
         	public void onClick(View v) {
         		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         		clickedPos = v.getId();
-        		
+
         		//get padlistItem where we can find the desired pad
         		PadlistItem item = (PadlistItem)getItem(clickedPos);
-   		
+
         		//set dialog title
         		alertDialogBuilder.setTitle("Delete pad");
-         
+
         		//set dialog message
         		alertDialogBuilder.setMessage("Pad \"" + item.getPadName() + "\" will be deleted. Continue?");
         		alertDialogBuilder.setCancelable(false);
-        		
+
         		alertDialogBuilder.setPositiveButton("Delete",new DialogInterface.OnClickListener() {
         			public void onClick(DialogInterface dialog, int id) {
         				//get list item from given list position
         				PadlistItem item = padlistItems.get(clickedPos);
-        				
+
         				//delete pad online
         				try{
         					final String padname = item.getPadName();
         					GlobalConfig.currentApi.getClient().deletePad(item.getPadId());
         					//delete from local list
-            				//padlistItems.remove(clickedPos); //not needed because whole activity is being reloaded in next step
-            				
+        					//padlistItems.remove(clickedPos); //not needed because whole activity is being reloaded in next step
+
         					GlobalConfig.ma.runOnUiThread(new Runnable(){
         						public void run(){
         							Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Pad \"" + padname + "\"deleted", Toast.LENGTH_LONG).show();
         						}
         					});
-        					
+
         					//restart MainActivity
-            				//TODO: Only reload list or inner activity
-            				GlobalConfig.ma.recreate();
-            				
-            				
+        					//TODO: Only reload list or inner activity
+        					GlobalConfig.ma.recreate();
+
+
         				}catch(EPLiteException e){
         					System.out.println(e);
-        					
+
         					GlobalConfig.ma.runOnUiThread(new Runnable(){
-        						  public void run(){
-        							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Error! Could not delete pad.", Toast.LENGTH_LONG).show();
-        						  }
+        						public void run(){
+        							Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Error! Could not delete pad.", Toast.LENGTH_LONG).show();
+        						}
         					});
         				}
 
-        				
+
         			}
         		});
-        			
+
         		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
         			public void onClick(DialogInterface dialog, int id) {
         				//if this button is clicked, just close the dialog box and do nothing
         				dialog.cancel();
         			}
         		});
-         
+
         		//create alert dialog
         		AlertDialog alertDialog = alertDialogBuilder.create();
-         
+
         		//show it
         		alertDialog.show();
         	} 
-		});
-       	
-       	
+        });
+
+
         return convertView;
 
     }
- 
+
     @Override
     public int getCount() {
-        return padlistItems.size();
-    }
- 
-    @Override
-    public Object getItem(int position) {
-        return padlistItems.get(position);
-    }
- 
-    @Override
-    public long getItemId(int position) {
-        return padlistItems.indexOf(getItem(position));
+    	return padlistItems.size();
     }
 
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		System.out.println("Click on adapter");
-		
-	}
-	
-	
+    @Override
+    public Object getItem(int position) {
+    	return padlistItems.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+    	return padlistItems.indexOf(getItem(position));
+    }
+
+    @Override
+    public void onClick(View v) {
+    	// TODO Auto-generated method stub
+    }
+
+
 }
