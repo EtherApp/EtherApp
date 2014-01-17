@@ -109,7 +109,7 @@ public class MainActivity extends TabActivity {
 			public void onClick(DialogInterface dialog, int id) {
 				final String padname = input.getText().toString();
 				try{
-					GlobalConfig.currentApi.getClient().createPad(padname,"Proudly presents by EtherApp!!");
+					GlobalConfig.currentApi.getClient().createPad(padname,"This pad is proudly presented by EtherApp. Check out now: http://www.etherapp.de");
 					
 					runOnUiThread(new Runnable() {
 						public void run() {
