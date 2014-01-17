@@ -19,6 +19,7 @@ The goal is to create an admin app for Etherpad Lite.
 
 ## Planned features
 * adding pads to groups
+* share a pad links with others
 
 ## Screenshot
 ![Screenshot 1](etherapp.png)
