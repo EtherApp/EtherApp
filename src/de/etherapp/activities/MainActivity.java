@@ -47,7 +47,7 @@ public class MainActivity extends TabActivity {
 			//no API has been created yet - directly switching to API creation dialog
 			Intent intent = new Intent(this, APISettingsActivity.class);
 			intent.putExtra("selected", ""); //put empty string to intend creation of new API
-			startActivity(intent);	
+			startActivity(intent);
 		}
 	}
 
@@ -241,6 +241,8 @@ public class MainActivity extends TabActivity {
 		//only do this if no error occured before
 		if(!flag){
 			
+			setTitle(GlobalConfig.currentApi.getAPINAME());
+			
 			//TAB INITIALIZATION
 			tabHost.getTabWidget().removeAllViews();
 
@@ -250,7 +252,7 @@ public class MainActivity extends TabActivity {
 			tab1.setContent(new Intent(this,PadlistActivity.class));
 			tabHost.addTab(tab1);
 
-			tab2 = tabHost.newTabSpec("testtab");
+			tab2 = tabHost.newTabSpec("groups");
 			tab2.setIndicator(getString(R.string.tab_group));
 			tab2.setContent(new Intent(this,GrouplistActivity.class));
 			tabHost.addTab(tab2);
