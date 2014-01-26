@@ -9,6 +9,8 @@
     <string name="title_activity_about">About EtherApp</string>
     <string name="title_activity_settings_list">Settings</string>
     <string name="title_activity_pad_content">Show pad text</string>
+    <string name="title_dialog_creategroup">Create new group</string>
+    <string name="title_dialog_createpad">Create new pad</string>
     
     <string name="tab_pads">Pads</string>
     <string name="tab_group">Groups</string>
@@ -30,6 +32,8 @@
     <string name="btnselectapi">Select API</string>
     <string name="btndeleteapi">Delete API</string>
     <string name="btnsaveapi">Save</string>
+    <string name="btnCreate">Create</string>
+    <string name="btnCancel">Cancel</string>
     
     <string name="label_name">Name:</string>
     <string name="label_url">URL:</string>
@@ -37,7 +41,15 @@
     <string name="label_apikey">API-Key:</string>
     <string name="label_apiedit">Enter your EtherPad API details</string>
     <string name="label_myapis">My EtherPad APIs</string>
+    <string name="label_entername">Please enter a name:</string>
+    <string name="label_confirmcreategroup">Do you really want to create a new group?</string>
     
     <string name="msgNetAPIErr">Network error or API not valid!</string>
+    <string name="msgPadCreateErr">Error! Could not create pad.</string>
+    <string name="msgGroupCreateErr">Error! Could not create group.</string>
+    <string name="msgPadDelErr">Error! Could not delete pad.</string>
+    <string name="msgGroupDelErr">Error! Could not delete group.</string>
+    <string name="defaultPadText">This pad is proudly presented by EtherApp. Check out now: http://www.etherapp.de</string>
+    
 
 </resources>

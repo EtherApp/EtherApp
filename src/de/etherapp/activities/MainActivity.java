@@ -99,21 +99,21 @@ public class MainActivity extends TabActivity {
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		
 		//set dialog title
-		alertDialogBuilder.setTitle("Create new pad");
+		alertDialogBuilder.setTitle(getString(R.string.title_dialog_creategroup));
  
 		//set dialog message
-		alertDialogBuilder.setMessage("Please enter a name.");
+		alertDialogBuilder.setMessage(getString(R.string.label_entername));
 		alertDialogBuilder.setCancelable(false);
 		
 		//set input field
 		final EditText input = new EditText(this);
 		alertDialogBuilder.setView(input);
 		
-		alertDialogBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+		alertDialogBuilder.setPositiveButton(getString(R.string.btnCreate),new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				final String padname = input.getText().toString();
 				try{
-					GlobalConfig.currentApi.getClient().createPad(padname,"Proudly presents by EtherApp!!");
+					GlobalConfig.currentApi.getClient().createPad(padname,getString(R.string.defaultPadText));
 					
 					runOnUiThread(new Runnable() {
 						public void run() {
@@ -127,14 +127,14 @@ public class MainActivity extends TabActivity {
 				} catch(EPLiteException e) {			
 					runOnUiThread(new Runnable() {
 						  public void run() {
-							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Error! Could not create pad.", Toast.LENGTH_LONG).show();
+							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), getString(R.string.msgPadCreateErr), Toast.LENGTH_LONG).show();
 						  }
 					});
 				}
 			}
 		});
 		
-		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		alertDialogBuilder.setNegativeButton(getString(R.string.btnCancel), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				//if this button is clicked, just close the dialog box and do nothing
 				dialog.cancel();
@@ -154,13 +154,13 @@ public class MainActivity extends TabActivity {
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		
 		//set dialog title
-		alertDialogBuilder.setTitle("Create new group");
+		alertDialogBuilder.setTitle(getString(R.string.title_dialog_creategroup));
  
 		//set dialog message
-		alertDialogBuilder.setMessage("Do you really want to create a new group?");
+		alertDialogBuilder.setMessage(getString(R.string.label_confirmcreategroup));
 		alertDialogBuilder.setCancelable(false);
 		
-		alertDialogBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+		alertDialogBuilder.setPositiveButton(getString(R.string.btnCreate),new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				try{
 					//uncomment this if grouplist is ready
@@ -180,14 +180,14 @@ public class MainActivity extends TabActivity {
 				} catch(EPLiteException e) {			
 					runOnUiThread(new Runnable() {
 						  public void run() {
-							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), "Error! Could not create group.", Toast.LENGTH_LONG).show();
+							  Toast.makeText(GlobalConfig.ma.getApplicationContext(), getString(R.string.msgGroupCreateErr), Toast.LENGTH_LONG).show();
 						  }
 					});
 				}
 			}
 		});
 		
-		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		alertDialogBuilder.setNegativeButton(getString(R.string.btnCancel), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				//if this button is clicked, just close the dialog box and do nothing
 				dialog.cancel();

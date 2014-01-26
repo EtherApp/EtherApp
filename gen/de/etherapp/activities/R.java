@@ -96,32 +96,41 @@ public final class R {
         public static final int tabbed=0x7f070006;
     }
     public static final class string {
-        public static final int action_about=0x7f05000e;
-        public static final int action_addapi=0x7f050009;
-        public static final int action_addpad=0x7f050008;
-        public static final int action_back=0x7f05000c;
-        public static final int action_quit=0x7f05000b;
-        public static final int action_refreshlist=0x7f05000a;
-        public static final int action_settings=0x7f05000d;
+        public static final int action_about=0x7f050012;
+        public static final int action_addapi=0x7f05000d;
+        public static final int action_addpad=0x7f05000c;
+        public static final int action_back=0x7f050010;
+        public static final int action_quit=0x7f05000f;
+        public static final int action_refreshlist=0x7f05000e;
+        public static final int action_settings=0x7f050011;
         public static final int app_name=0x7f050000;
-        public static final int btnDeleteGroup=0x7f050014;
-        public static final int btnDeletePad=0x7f050013;
-        public static final int btndeleteapi=0x7f050016;
-        public static final int btnsaveapi=0x7f050017;
-        public static final int btnselectapi=0x7f050015;
-        public static final int imgApiSelected=0x7f050012;
-        public static final int imgLastEdited=0x7f050011;
-        public static final int imgRevCount=0x7f050010;
-        public static final int imgUsersCount=0x7f05000f;
-        public static final int label_apiedit=0x7f05001c;
-        public static final int label_apikey=0x7f05001b;
-        public static final int label_myapis=0x7f05001d;
-        public static final int label_name=0x7f050018;
-        public static final int label_port=0x7f05001a;
-        public static final int label_url=0x7f050019;
-        public static final int msgNetAPIErr=0x7f050020;
-        public static final int tab_group=0x7f05001f;
-        public static final int tab_pads=0x7f05001e;
+        public static final int btnCancel=0x7f05001d;
+        public static final int btnCreate=0x7f05001c;
+        public static final int btnDeleteGroup=0x7f050018;
+        public static final int btnDeletePad=0x7f050017;
+        public static final int btndeleteapi=0x7f05001a;
+        public static final int btnsaveapi=0x7f05001b;
+        public static final int btnselectapi=0x7f050019;
+        public static final int defaultPadText=0x7f05002b;
+        public static final int imgApiSelected=0x7f050016;
+        public static final int imgLastEdited=0x7f050015;
+        public static final int imgRevCount=0x7f050014;
+        public static final int imgUsersCount=0x7f050013;
+        public static final int label_apiedit=0x7f050022;
+        public static final int label_apikey=0x7f050021;
+        public static final int label_confirmcreategroup=0x7f050025;
+        public static final int label_entername=0x7f050024;
+        public static final int label_myapis=0x7f050023;
+        public static final int label_name=0x7f05001e;
+        public static final int label_port=0x7f050020;
+        public static final int label_url=0x7f05001f;
+        public static final int msgGroupCreateErr=0x7f050028;
+        public static final int msgGroupDelErr=0x7f05002a;
+        public static final int msgNetAPIErr=0x7f050026;
+        public static final int msgPadCreateErr=0x7f050027;
+        public static final int msgPadDelErr=0x7f050029;
+        public static final int tab_group=0x7f05000b;
+        public static final int tab_pads=0x7f05000a;
         public static final int title_activity_about=0x7f050005;
         public static final int title_activity_grouplist=0x7f050003;
         public static final int title_activity_pad_content=0x7f050007;
@@ -129,6 +138,8 @@ public final class R {
         public static final int title_activity_settings=0x7f050004;
         public static final int title_activity_settings_list=0x7f050006;
         public static final int title_activity_tabbed=0x7f050001;
+        public static final int title_dialog_creategroup=0x7f050008;
+        public static final int title_dialog_createpad=0x7f050009;
     }
     public static final class style {
         /** 
