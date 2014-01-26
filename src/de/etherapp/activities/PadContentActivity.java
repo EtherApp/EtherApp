@@ -27,7 +27,10 @@ public class PadContentActivity extends Activity {
 		//is empty if new API shall be created
 		Intent intent = getIntent();
 		padid = intent.getStringExtra("padid");
-				
+		
+		// Set Title to padid
+		setTitle(padid);
+		
 		//content text field
 		padcontent = (TextView) findViewById(R.id.txtPadContent);
 		
