@@ -3,6 +3,7 @@ package de.etherapp.activities;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,7 +15,13 @@ public class AboutActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
 		
+		//get textview
 		TextView tv = (TextView) findViewById(R.id.txtAbout);
+		
+		//make textview scrollable
+		tv.setMovementMethod(new ScrollingMovementMethod());
+		
+		//set the text
 		tv.setText("EtherApp - An admin app for Etherpad Lite\n"
 				+ "http://www.etherapp.de\n\n"
 				+ "2014 by\n"
@@ -32,7 +39,7 @@ public class AboutActivity extends Activity {
 				+ "GNU General Public License for more details.\n\n"
 				+ "You should have received a copy of the GNU General Public License "
 				+ "along with this program.\n"
-				+ "If not, see <http://www.gnu.org/licenses/>."
+				+ "If not, see <http://www.gnu.org/licenses/>.\n\n\n"
 		);
 	}
 
