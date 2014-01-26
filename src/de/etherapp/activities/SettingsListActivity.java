@@ -93,10 +93,6 @@ public class SettingsListActivity<T> extends Activity {
 	    			intent.putExtra("selected", "");
 	    			startActivity(intent);
 	                return true;
-	            case R.id.action_about:
-	    			Intent j = new Intent(this, AboutActivity.class);
-	            	startActivity(j);
-	            	return true;
 	    		case R.id.action_quit:
 	    			this.finish();
 	            	return true;

@@ -41,9 +41,9 @@ public final class R {
         public static final int action_about=0x7f080020;
         public static final int action_add=0x7f080023;
         public static final int action_addpad=0x7f080021;
-        public static final int action_quit=0x7f08001f;
+        public static final int action_quit=0x7f08001e;
         public static final int action_refreshlist=0x7f080022;
-        public static final int action_settings=0x7f08001e;
+        public static final int action_settings=0x7f08001f;
         public static final int apilist=0x7f080011;
         public static final int btnDeleteGroup=0x7f080016;
         public static final int btnDeletePad=0x7f08001d;
