@@ -30,5 +30,6 @@
     <string name="msgNetAPIErr">Network error or API not valid!</string>
     <string name="action_addpad">Add pad</string>
     <string name="action_refreshlist">Refresh list</string>
-    
+    <string name="title_activity_about">About EtherApp</string>
+
 </resources>

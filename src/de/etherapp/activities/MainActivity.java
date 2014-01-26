@@ -65,17 +65,21 @@ public class MainActivity extends TabActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
-	            case R.id.action_settings:
-	            Intent i = new Intent(this, SettingsListActivity.class);
-	            startActivity(i);
-	                return true;
-	            case R.id.action_quit:
-	            	this.finish();
+	    		case R.id.action_settings:
+	    			Intent i = new Intent(this, SettingsListActivity.class);
+	            	startActivity(i);
 	            	return true;
-	            case R.id.action_refreshlist:
-	            	this.recreate();
+	    		case R.id.action_about:
+	    			Intent j = new Intent(this, AboutActivity.class);
+	            	startActivity(j);
 	            	return true;
-	            case R.id.action_addpad:
+	    		case R.id.action_quit:
+	    			this.finish();
+	            	return true;
+	    		case R.id.action_refreshlist:
+	    			this.recreate();
+	    			return true;
+	    		case R.id.action_addpad:
 	            	int tabindex = this.tabHost.getCurrentTab();
 	            	if(tabindex == 0){
 	            		addNewPad();

@@ -48,6 +48,10 @@
             android:name="de.etherapp.activities.PadContentActivity"
             android:label="@string/title_activity_pad_content" >
         </activity>
+        <activity
+            android:name="de.etherapp.activities.AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>
