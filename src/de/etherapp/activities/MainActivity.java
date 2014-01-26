@@ -5,8 +5,6 @@ import java.util.HashMap;
 import org.etherpad_lite_client.EPLiteException;
 
 import de.etherapp.activities.R;
-import de.etherapp.beans.APIlistItem;
-import de.etherapp.beans.PadlistItem;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.accounts.NetworkErrorException;
@@ -99,7 +97,7 @@ public class MainActivity extends TabActivity {
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		
 		//set dialog title
-		alertDialogBuilder.setTitle(getString(R.string.title_dialog_creategroup));
+		alertDialogBuilder.setTitle(getString(R.string.title_dialog_createpad));
  
 		//set dialog message
 		alertDialogBuilder.setMessage(getString(R.string.label_entername));

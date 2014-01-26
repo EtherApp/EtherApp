@@ -2,21 +2,17 @@ package de.etherapp.activities;
 
 import java.util.HashMap;
 
-import org.etherpad_lite_client.EPLiteException;
-
 import android.content.ContentValues;
 import de.etherapp.epclient.PadAPI;
 import de.etherapp.sql.DBHandler;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 public class GlobalConfig {
 	public static MainActivity ma;
 
 	public static PadAPI currentApi = null;
 	public static HashMap<String,PadAPI> apiMap = new HashMap<String,PadAPI>();
-	private static int apiCount = -1;
 	private static DBHandler dbh = null;
 
 	public static boolean selectApi(String apiid){

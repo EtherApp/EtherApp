@@ -1,9 +1,6 @@
 package de.etherapp.activities;
 
-import org.etherpad_lite_client.EPLiteException;
-
 import de.etherapp.activities.R;
-import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.PadAPI;
 import android.os.Bundle;
 import android.app.Activity;
