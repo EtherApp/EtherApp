@@ -15,8 +15,9 @@ public class AboutActivity extends Activity {
 		setContentView(R.layout.activity_about);
 		
 		TextView tv = (TextView) findViewById(R.id.txtAbout);
-		tv.setText("EtherApp - an admin app for Etherpad Lite\n\n" +
-				"2014 by\n"
+		tv.setText("EtherApp - an admin app for Etherpad Lite\n"
+				+ "http://www.etherapp.de\n\n"
+				+ "2014 by\n"
 				+ "Martin Stoffers\n"
 				+ "Ferdinand Malcher\n"
 				+ "HfT Leipzig\n\n\n"
