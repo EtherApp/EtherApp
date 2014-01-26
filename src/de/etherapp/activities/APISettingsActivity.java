@@ -1,9 +1,6 @@
 package de.etherapp.activities;
 
-import org.etherpad_lite_client.EPLiteException;
-
 import de.etherapp.activities.R;
-import de.etherapp.beans.PadlistItem;
 import de.etherapp.epclient.PadAPI;
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -83,6 +81,24 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 		getMenuInflater().inflate(R.menu.settings, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	            case R.id.action_about:
+	    			Intent j = new Intent(this, AboutActivity.class);
+	            	startActivity(j);
+	            	return true;
+	    		case R.id.action_quit:
+	    			this.finish();
+	            	return true;
+	            default:
+	                return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	
 
 	@Override
 	public void onClick(View v) {
@@ -220,6 +236,7 @@ public class APISettingsActivity extends Activity implements OnClickListener{
 	        	GlobalConfig.selectApi(selected);
 	        	
 	        	//refresh and go back to main activity
+				GlobalConfig.ma.recreate();
 				Intent intent = new Intent();
 				intent.setClassName(getPackageName(),getPackageName()+".MainActivity");
 				startActivity(intent);

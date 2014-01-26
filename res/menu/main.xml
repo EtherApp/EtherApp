@@ -4,12 +4,17 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="Settings"/>
+        android:title="@string/action_settings"/>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_about"/>
     <item
         android:id="@+id/action_quit"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="Quit"/>
+        android:title="@string/action_quit"/>
     
     <item android:id="@+id/action_addpad"
           android:icon="@drawable/iconmonstr_note_25_icon_24"
