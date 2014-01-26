@@ -22,7 +22,7 @@ public class AboutActivity extends Activity {
 		tv.setMovementMethod(new ScrollingMovementMethod());
 		
 		//set the text
-		tv.setText("EtherApp - an admin app for Etherpad Lite\n"
+		tv.setText("EtherApp - An admin app for Etherpad Lite\n"
 				+ "http://www.etherapp.de\n\n"
 				+ "2014 by\n"
 				+ "Martin Stoffers\n"
